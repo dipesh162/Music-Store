@@ -4,22 +4,27 @@ import React, { useEffect, useState } from 'react';
 import {useRouter} from 'next/navigation';
 import  axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { saveUserInfo } from '@/redux/slices/authSlice';
+import { useAppDispatch } from '@/redux/hooks';
 
 export default function SignupPage(){
     const router = useRouter()
     const [user, setUser] = useState({
         email: "",
         password: "",
-        username: "",
+        firstName: "",
+        lastName: ""
     })
     const [buttonDisabled, setButtonDisabled] = useState(false)
     const [loading, setLoading] = useState(false)
+
+    const dispatch = useAppDispatch();
 
     const onSignUp = async ()=>{
         try {
             setLoading(true)
             const res = await axios.post("/api/users/signup", user)
-            console.log(res.data)
+            dispatch(saveUserInfo({ user: res.data }));
             router.push('/login')
         } catch (err:any){
             console.log("Signup failed",err.message )
@@ -30,7 +35,7 @@ export default function SignupPage(){
     }
 
     useEffect(()=>{
-        if(user.email.length > 0 && user.password.length > 0 && user.username.length>0){
+        if(user.email.length > 0 && user.password.length > 0 && user.firstName.length>0 && user.lastName.length>0){
             setButtonDisabled(false)
         } else {
             setButtonDisabled(true)
@@ -41,7 +46,7 @@ export default function SignupPage(){
         <div className='flex flex-col items-center justify-center text-[#000000]'>
             <h1 className='text-[#000000]'>{loading ? 'processing': 'Signup'}</h1>
             <br></br>
-            <label htmlFor="username" style={{color:'black'}}>username</label>
+            {/* <label htmlFor="username" style={{color:'black'}}>username</label>
             <input 
                 className='p-2 border-[#000000] border-[1px]'
                 type="text" 
@@ -49,6 +54,24 @@ export default function SignupPage(){
                 value={user.username}
                 onChange={(e)=> setUser({...user, username: e.target.value})}
                 placeholder='username'
+            /> */}
+            <label htmlFor="firstName" style={{color:'black'}}>First Name</label>
+            <input 
+                className='p-2 border-[#000000] border-[1px]'
+                type="text" 
+                id="firstName"
+                value={user.firstName}
+                onChange={(e)=> setUser({...user, firstName: e.target.value})}
+                placeholder='username'
+            />
+            <label htmlFor="lastName" style={{color:'black'}}>lastName</label>
+            <input 
+                className='p-2 border-[#000000] border-[1px]'
+                type="text" 
+                id="lastName"
+                value={user.lastName}
+                onChange={(e)=> setUser({...user, lastName: e.target.value})}
+                placeholder='lastName'
             />
             <br></br>
             <label htmlFor="email" style={{color:'black'}}>email</label>

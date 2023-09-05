@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import {useRouter} from 'next/navigation';
 import  axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { useAppDispatch } from '@/redux/hooks';
+import { saveUserInfo } from '@/redux/slices/authSlice';
 
 
 export default function LoginPage(){
@@ -15,11 +17,13 @@ export default function LoginPage(){
     const [buttonDisabled, setButtonDisabled] = useState(false)
     const [loading, setLoading] = useState(false)
 
+    const dispatch = useAppDispatch();
+
     const onLogin = async ()=>{
         try {
             setLoading(true)
-            await axios.post("/api/users/login", user);
-            console.log("")
+            const res = await axios.post("/api/users/login", user);
+            dispatch(saveUserInfo({ user: res.data.user }));
             toast.success("Login SUccess")
             router.push('/profile')
         } catch (error: any) {

@@ -29,7 +29,7 @@ export async function POST(request: NextRequest){
         // Create token data
         const tokenData = {
             id: user._id,
-            username: user.username,
+            email: user.email,
         }
 
         // Create token
@@ -37,7 +37,15 @@ export async function POST(request: NextRequest){
 
         const response = NextResponse.json({
             message: "Login successful",
-            success: true
+            success: true,
+            user : {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                isVerified: user.isVerified,
+                token: token
+            }
         })
         response.cookies.set("token",token, {
             httpOnly: true

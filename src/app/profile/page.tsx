@@ -1,4 +1,7 @@
 "use client"
+import { useAppDispatch } from "@/redux/hooks";
+import { reset } from "@/redux/slices/authSlice";
+
 import axios from "axios"
 import Link from "next/link"
 import { useRouter } from "next/navigation";
@@ -9,9 +12,12 @@ export default function ProfilePage(){
     const router = useRouter()
     const [data, setData] = useState("nothing")
 
+    const dispatch = useAppDispatch();
+
     const logout = async () =>{
         try {
             await axios.get('/api/users/logout')
+            dispatch(reset())
             toast.success('Logout successful')
             router.push('/login')
         } catch (error:any) {
