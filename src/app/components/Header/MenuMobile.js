@@ -31,9 +31,9 @@ export default function MenuMobile(){
                     <BiShoppingBag size={24} color="black"/>
                 </div>
             </div>
-            {/* {isDrawerOpen &&
+            {isDrawerOpen &&
                 <MenuMobileDrawer/>
-            } */}
+            }
         </>
     )
 }

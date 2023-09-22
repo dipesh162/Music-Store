@@ -1,12 +1,16 @@
 'use client'
 import React, { useState } from 'react'
 import ProductImage from './ProductImage'
+import ReactImageZoom from 'react-image-zoom';
 
 export default function ProductImages(){
 
     const productImagesSources = ['g1.jpg', 'g2.jpg', 'g3.jpg', 'g4.jpg']
     const [selectedProductImage, setSelectedProductImage] = useState(0)
     const [highlightedImageBorderPos, setHighlightedImageBorderPos] = useState(0)
+
+    
+    const props = {width: 400, height: 250, zoomWidth: 500, img: productImagesSources[selectedProductImage]};
 
     const handleClick = (i)=>{
         setSelectedProductImage(i)
@@ -40,6 +44,8 @@ export default function ProductImages(){
                 width={'340'}
                 height={'440'}   
             />
+
+            <ReactImageZoom {...props} />
         </div>
     )
 }   
