@@ -1,6 +1,7 @@
 import HeaderData from '@/app/static/HeaderData';
 import Link from 'next/link';
 import React, { useState } from 'react'
+import { BsChevronDown } from 'react-icons/bs';
 
 export default function MenuMobileDrawer(){
 
@@ -8,9 +9,9 @@ export default function MenuMobileDrawer(){
 
     return(
         <div>
-            <div className="transition duration-300 delay-1000 ease-in-out w-[80%] absolute top-0 h-[100vh] overflow-auto bg-slate-50 z-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+            <div className="transition duration-300 delay-1000  pb-6 ease-in-out w-[80%] absolute top-0 h-[100vh] overflow-auto bg-slate-50 z-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
                 <Link href='/'><h4 className='text-[16px] border-[#ddd] border-b-[1px] py-2 px-4 font-semibold text-[#161616]'>Home</h4></Link>
-                <h4 className='text-[16px] border-[#ddd] border-b-[1px] py-2 px-4 font-semibold text-[#161616]' onClick={()=> setShowInstruments(!showInstruments)}>Musical Instruments</h4>
+                <h4 className='text-[16px] border-[#ddd] flex justify-between items-center border-b-[1px] py-2 px-4 font-semibold text-[#161616]' onClick={()=> setShowInstruments(!showInstruments)}>Musical Instruments <BsChevronDown className={`rotate-${showInstruments ? '180' : '0' }`} size={14} color="black"/></h4>
                     {showInstruments && 
                         <div className='border-[#ddd] border-b-[1px]'>
                                 {HeaderData.map((data,i)=>(

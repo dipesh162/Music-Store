@@ -15,7 +15,7 @@ export default function Menu(){
 
     return(
         <>
-            <div className="hidden md:flex bg-white border-b-[1px] border-[#e8e8e8] justify-between pr-6 relative">
+            <div className="hidden md:flex bg-white justify-between pr-6 relative">
                 <Link href='/'>
                     <Image
                         src='/images/music-store.jpg'
