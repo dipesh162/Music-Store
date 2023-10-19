@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import ProductDetails from '../../components/ProductDetails'
+import ProductDetails from '../../components/Product/ProductDetails'
 import axios from 'axios';
 
 interface pageProps{
