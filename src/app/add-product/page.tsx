@@ -84,13 +84,7 @@ export default function AddProduct(){
                     console.error(error);
                 }
             }
-
-            setFormData({
-                ...formData,
-                images: uploadedImgSources
-            })
-
-            resolve(true)
+            resolve(uploadedImgSources)
         })
     }
     
@@ -101,7 +95,10 @@ export default function AddProduct(){
         const imageUploadResponse = await handleImageUpload()
         if(imageUploadResponse){
             try {
-                const res = await axios.post("/api/product/add", formData);
+                const res = await axios.post("/api/product/add", {
+                    ...formData,
+                    images: imageUploadResponse
+                });
                 if(res.data.success){
                     console.log(res)
                     alert('Product added successfully')
