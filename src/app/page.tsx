@@ -1,10 +1,9 @@
-import Image from 'next/image'
-import ProductCard from './components/Product/ProductCard'
+import TopCategories from './components/Home/TopCategories'
 
 export default function Home() {
   return (
     <main className="">
-      <ProductCard/>
+      <TopCategories/>
     </main>
   )
 }

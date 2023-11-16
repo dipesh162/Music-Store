@@ -1,6 +1,7 @@
 'use client'
 import axios from "axios";
 import { useState } from "react";
+import  toLowercase  from '../helpers/front-end/toLowercase'
 
 export type FormDataType = {
     name: string;
@@ -97,6 +98,9 @@ export default function AddProduct(){
             try {
                 const res = await axios.post("/api/product/add", {
                     ...formData,
+                    brand: toLowercase(formData.brand),
+                    category: toLowercase(formData.category).replaceAll(' ','-'),
+                    subCategory: (toLowercase(formData.subCategory)).replaceAll(' ','-'),
                     images: imageUploadResponse
                 });
                 if(res.data.success){
@@ -123,6 +127,7 @@ export default function AddProduct(){
                         onChange={(e)=>{
                             setFormData({...formData,name: e.target.value})
                         }}
+                        value={formData.name}
                     />
                 </div>
                 <div className="flex justify-center gap-2">
@@ -134,6 +139,7 @@ export default function AddProduct(){
                         onChange={(e)=>{
                             setFormData({...formData,brand: e.target.value})
                         }}
+                        value={formData.brand}
                     />
                 </div>
                 <div className="flex justify-center gap-2">
@@ -145,6 +151,7 @@ export default function AddProduct(){
                         onChange={(e)=>{
                             setFormData({...formData,category: e.target.value})
                         }}
+                        value={formData.category}
                     />
                 </div>
                 <div className="flex justify-center gap-2">
@@ -156,6 +163,7 @@ export default function AddProduct(){
                         onChange={(e)=>{
                             setFormData({...formData,subCategory: e.target.value})
                         }}
+                        value={formData.subCategory}
                     />
                 </div>
                 <div className="flex justify-center gap-2">
@@ -167,6 +175,7 @@ export default function AddProduct(){
                         onChange={(e)=>{
                             setFormData({...formData,description: e.target.value})
                         }}
+                        value={formData.description}
                     />
                 </div>
                 <div className="flex justify-center gap-2">
@@ -178,6 +187,7 @@ export default function AddProduct(){
                         onChange={(e)=>{
                             setFormData({...formData, price: Number(e.target.value)})
                         }}
+                        value={formData.price || ''} 
                     />
                 </div>
                 <div className="flex justify-center gap-2">
@@ -189,6 +199,7 @@ export default function AddProduct(){
                         onChange={(e)=>{
                             setFormData({...formData,ratings: Number(e.target.value)})
                         }}
+                        value={formData.ratings || ''}
                     />
                 </div>
                 <div className="flex justify-center gap-2">
