@@ -16,8 +16,8 @@ export default function MenuMobileDrawer(){
                         <div className='border-[#ddd] border-b-[1px]'>
                                 {HeaderData.map((data,i)=>(
                                     <div className='pl-6 pt-3'>
-                                        <Link href='/'>
-                                            <p className="text-[14px] relative font-semibold pb-1.5">{data.name}</p>
+                                        <Link href={data.item.link}>
+                                            <p className="text-[14px] relative font-semibold pb-1.5">{data.item.name}</p>
                                         </Link>
 
                                         <div className='ml-2 mb-1'>

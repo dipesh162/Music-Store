@@ -1,27 +1,35 @@
 const HeaderData = [
     {
-        name: 'Guitars',
+        item: 
+            {
+                name: 'Guitars',
+                link: '/collections/guitars'
+            },
         items: [
             {
                 name: 'Electric Guitars',
-                link: '/'
+                link: '/collections/electric-guitars'
             },
             {
                 name: 'Acoustic Guitars',
-                link: '/'
+                link: '/collections/acoustic-guitars'
             },
             {
                 name: 'Bass Guitars',
-                link: '/'
+                link: '/collections/bass-guitars'
             },  
             {
                 name: 'Classical Guitars',
-                link: '/'
+                link: '/collections/classical-guitars'
             },  
         ]
     },
     {
-        name: 'Keyboards & Piano',
+        item: 
+            {
+                name: 'Keyboards & Piano',
+                link: '/collections/keyboards-and-piano'
+            },
         items: [
             {
                 name: 'Pianos',
@@ -42,7 +50,11 @@ const HeaderData = [
         ]
     },
     {
-        name: 'Drums & Percussion',
+        item: 
+            {
+                name: 'Drums & Percussion',
+                link: '/collections/drums-and-percussion'
+            },
         items: [
             {
                 name: 'Acoustic Drumkits',
@@ -59,7 +71,11 @@ const HeaderData = [
         ]
     },
     {
-        name: 'Wind Instruments',
+        item: 
+            {
+                name: 'Wind Instruments',
+                link: '/collections/wind-instruments'
+            },
         items: [
             {
                 name: 'Harmonicas',

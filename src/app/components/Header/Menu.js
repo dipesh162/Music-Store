@@ -34,13 +34,13 @@ export default function Menu(){
                             classNames="transitions"
                             unmountOnExit
                         >
-                            <div className="absolute left-[50%] -translate-x-1/2 bg-white top-[86px] flex flex-row gap-8 w-max px-9 py-6" style={{boxShadow: '0 4.5px 4.5px rgba(0,0,0,.19)'}}>
+                            <div className="absolute left-[50%] -translate-x-1/2 bg-white top-[86px] flex flex-row gap-8 w-max px-9 py-6 z-10" style={{boxShadow: '0 4.5px 4.5px rgba(0,0,0,.19)'}}>
                                 {HeaderData.map((data,i)=>(
                                     <div>
-                                        <Link href='/'>
+                                        <Link href={data.item.link}>
                                             <p className="
                                             hover:after:content-[''] hover:after:absolute hover:after:w-full hover:after:h-[2px] hover:after:left-0 hover:after:bottom-0 hover:after:bg-[#0087ca] hover:after:scale-x-0 hover:after:origin-bottom-right 
-                                            relative font-semibold pb-1.5">{data.name}</p>
+                                            relative font-semibold pb-1.5">{data.item.name}</p>
                                         </Link>
 
                                         {data.items.map((item, i)=> (
