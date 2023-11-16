@@ -8,11 +8,11 @@ connect()
 export async function POST(request: NextRequest){
     try{
         const reqBody = await request.json()
-        const {name, brand, type, subType, description, price, ratings, images} = reqBody
+        const {name, brand, category, subCategory, description, price, ratings, images} = reqBody
  
         let slug = name.replace(/[()]/g,'').trim().split(' ').join('-')
         const newProduct = new Product({
-            name, brand, type, subType, description, price, ratings,images,slug
+            name, brand, category, subCategory, description, price, ratings,images,slug
         })
         
         const savedProduct = await newProduct.save()
