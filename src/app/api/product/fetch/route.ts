@@ -8,8 +8,8 @@ connect()
 export async function GET(request: NextRequest){
     try{
 
-        let searchParams = request.nextUrl.searchParams
-        let slug = searchParams.get('slug')
+        const searchParams = request.nextUrl.searchParams
+        const slug = searchParams.get('slug')
 
         const product =  await Product.findOne({slug:slug})
         if(!product){

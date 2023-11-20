@@ -75,7 +75,7 @@ export default function AddProduct(){
 
                 try {
                     const response = await axios.post(
-                    'https://api.cloudinary.com/v1_1/dykew1rdb/image/upload',
+                    `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_NAME}/image/upload`,
                     uploadFormData
                     );
                     uploadedImgSources = [...uploadedImgSources, response.data.secure_url]

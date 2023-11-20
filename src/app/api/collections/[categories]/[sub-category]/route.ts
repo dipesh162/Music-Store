@@ -7,10 +7,10 @@ connect()
 
 export async function GET(request: NextRequest,params:any){
     try{
+
         const {['sub-category']: subCategory, categories} = params.params
-        console.log(subCategory)
+
         const productsByCategories =  await Product.find({subCategory: subCategory})
-        console.log(13,productsByCategories)
         if(!productsByCategories){
             return NextResponse.json({error: "Product does not exist"}, {status: 400})
         }

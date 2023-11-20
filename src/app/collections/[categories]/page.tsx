@@ -3,7 +3,7 @@ import axios from "axios";
 
 const fetchData = async (categories:string) =>{
     try {
-        const res = await axios.get(`http://localhost:3000/api/collections/${categories}`);
+        const res = await axios.get(`${process.env.DOMAIN}/api/collections/${categories}`);
         return res.data.products
     } catch (error) {
         

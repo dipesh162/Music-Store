@@ -8,14 +8,14 @@ interface pageProps{
 
 const fetchData = async (slug: string) =>{
     try {
-        const res = await axios.get("http://localhost:3000/api/product/fetch",{
+        const res = await axios.get(`${process.env.DOMAIN}/api/product/fetch`,{
             params: {
                 slug: slug
             }
         });
         return res.data.product
     } catch (error) {
-        
+        return error
     }
 }
 
