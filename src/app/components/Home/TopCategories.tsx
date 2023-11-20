@@ -11,7 +11,7 @@ export default function Categories() {
   const carouselRef = useRef<HTMLInputElement>(null)
   const cardRef = useRef<HTMLInputElement>(null)
   const handleClick = (position:string)=>{
-    let cardWidth:number = cardRef.current?.clientWidth
+    let cardWidth:number  | undefined = cardRef.current?.clientWidth
     let gapBetweenCards = 28
     if(position == 'left'){
       carouselRef.current.scrollLeft-= cardWidth+gapBetweenCards
