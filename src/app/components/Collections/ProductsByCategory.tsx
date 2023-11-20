@@ -1,6 +1,23 @@
+import { FC } from "react";
 import ProductCard from "../Product/ProductCard";
 
-export default function ProductsByCategory({products}){
+interface FormDataType {
+    _id: string;
+    name: string;
+    brand: string;
+    category: string;
+    subCategory: string;
+    description: string;
+    price: number;
+    ratings: number;
+    images: string[]  
+}
+
+interface pageProps{
+    products: [FormDataType]
+}
+
+const ProductsByCategory: FC<pageProps> = ({products}) =>{
 
     return(
         <>
@@ -13,3 +30,5 @@ export default function ProductsByCategory({products}){
         </>
     )
 }
+
+export default ProductsByCategory
