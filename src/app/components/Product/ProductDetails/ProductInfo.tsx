@@ -28,7 +28,7 @@ const ProductInfo: FC<pageProps> = ({product}) =>{
 
             <p>Rating stars: {product.ratings}</p>
 
-            <h2 className="text-[#616364] text-[30px] font-bold">&#8377;{product.price}</h2>
+            <h2 className="text-[#616364] text-[30px] font-bold">&#8377;{product.price.toLocaleString()}</h2>
             <p>Inclusive of all taxes</p>
 
             <div className="flex gap-3 my-3 mx-0 justify-center md:justify-normal">

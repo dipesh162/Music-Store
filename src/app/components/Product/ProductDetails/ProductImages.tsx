@@ -20,8 +20,6 @@ interface pageProps{
 }
 
 const ProductImages: FC<pageProps> = ({product}) =>{
-
-    console.log('24',product)
     const productImagesSources = product.images
     const [selectedProductImage, setSelectedProductImage] = useState(0)
     const [highlightedImageBorderPos, setHighlightedImageBorderPos] = useState(0)
