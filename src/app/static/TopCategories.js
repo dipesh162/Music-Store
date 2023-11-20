@@ -24,12 +24,6 @@ const TopCategories = [
         link: '/collections/drums-and-percussion/electric-drum-kits',
         img: '/images/Top Categories/electronic-drum-kits.avif'
     },
-
-    {
-        name: 'Keyboards',
-        link: '/collections/keyboards-and-pianos/keyboards',
-        img: '/images/Top Categories/keyboards.webp'
-    },
 ]
 
 export default TopCategories

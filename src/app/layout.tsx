@@ -20,7 +20,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Header/>
-            {children}
+            <div className='max-w-[1280px] mx-auto'>
+              {children}
+            </div>
           {/* <Footer/> */}
         </Providers>
       </body>
