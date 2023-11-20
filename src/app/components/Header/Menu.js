@@ -44,7 +44,7 @@ export default function Menu(){
                                         </Link>
 
                                         {data.items.map((item, i)=> (
-                                            <Link href='/'>
+                                            <Link href={item.link}>
                                                 <p className="
                                                 hover:after:content-[''] hover:after:absolute hover:after:w-full hover:after:h-[2px] hover:after:left-0 hover:after:bottom-0 hover:after:bg-[#0087ca] hover:after:scale-x-0 hover:after:origin-bottom-right hover:after:ease-out hover:after:duration-75 
                                                 relative pb-1 text-[14px]">{item.name}</p>

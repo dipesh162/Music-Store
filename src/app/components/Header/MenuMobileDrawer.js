@@ -22,7 +22,7 @@ export default function MenuMobileDrawer(){
 
                                         <div className='ml-2 mb-1'>
                                             {data.items.map((item, i)=> (
-                                                <Link href='/'>
+                                                <Link href={item.link}>
                                                     <p className="text-[13px] relative pb-1">{item.name}</p>
                                                 </Link>
                                             ))}
