@@ -27,8 +27,8 @@ export default function Categories() {
       <div className='relative px-3 lg:px-1'>
         <div ref={carouselRef} className='no-scrollbar overflow-hidden scroll-smooth'>
           <div className='flex gap-4 md:gap-0 no-scrollbar'>
-            {TopCategories.map((category)=>(
-              <Link href={category.link}>
+            {TopCategories.map((category, i)=>(
+              <Link href={category.link} key={i}>
                 <div className='flex flex-col  mx-0 md:mx-3.5'>
                   <div ref={cardRef} className='relative'>
                     <div className='block shrink-0 h-[160px] md:h-[200px] lg:h-[290px] w-[160px] md:w-[200px] lg:w-[290px]'>

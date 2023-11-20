@@ -15,14 +15,14 @@ export default function MenuMobileDrawer(){
                     {showInstruments && 
                         <div className='border-[#ddd] border-b-[1px]'>
                                 {HeaderData.map((data,i)=>(
-                                    <div className='pl-6 pt-3'>
+                                    <div className='pl-6 pt-3' key={i}>
                                         <Link href={data.item.link}>
                                             <p className="text-[14px] relative font-semibold pb-1.5">{data.item.name}</p>
                                         </Link>
 
                                         <div className='ml-2 mb-1'>
                                             {data.items.map((item, i)=> (
-                                                <Link href={item.link}>
+                                                <Link href={item.link} key={i}>
                                                     <p className="text-[13px] relative pb-1">{item.name}</p>
                                                 </Link>
                                             ))}

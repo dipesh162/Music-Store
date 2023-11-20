@@ -6,6 +6,7 @@ export default function ProductsByCategory({products}){
         <>
             {products.map((product:any,i:number)=>(
                 <ProductCard
+                    key={i}
                     product={product}
                 />
             ))}
