@@ -27,7 +27,7 @@ const ProductImages: FC<pageProps> = ({product}) =>{
     
     const props = {width: 400, height: 250, zoomWidth: 500, img: `/${productImagesSources[selectedProductImage]}`};
 
-    const handleClick = (i)=>{
+    const handleClick = (i:number)=>{
         setSelectedProductImage(i)
         let imageBlockHeight = 100
         let imageBlockDistance = 8
