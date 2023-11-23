@@ -1,7 +1,7 @@
 'use client'
 import React, { FC, useState } from 'react'
 import ProductImage from './ProductImage'
-import ReactImageZoom from 'react-image-zoom';
+// import ReactImageZoom from 'react-image-zoom';
 
 export interface FormDataType {
     _id: string;
