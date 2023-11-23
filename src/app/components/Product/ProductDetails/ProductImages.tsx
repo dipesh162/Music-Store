@@ -46,6 +46,8 @@ const ProductImages: FC<pageProps> = ({product}) =>{
                         index={i}
                         key={i}
                         handleClick={handleClick}
+                        wishListIcon={true}
+                        cursor='pointer'
                     />
                 ))}
                 <div 
@@ -58,6 +60,8 @@ const ProductImages: FC<pageProps> = ({product}) =>{
                 src={productImagesSources[selectedProductImage]}
                 width={340}
                 height={440}   
+                wishListIcon={true}
+                cursor='default'
             />
 
             {/* <ReactImageZoom {...props} /> */}

@@ -21,7 +21,7 @@ interface pageProps{
 const ProductDetails: FC<pageProps> = async ({product }) => {
 
     return(
-        <div className="container px-3 py-2 flex flex-col md:flex-row justify-center items-center md:items-start gap-2 max-w-[1110px] mx-auto">
+        <div className="container px-5 py-4 flex flex-col md:flex-row justify-center items-center md:items-start gap-2 max-w-[1110px] mx-auto">
             <ProductImages
                 product={product}
             />
