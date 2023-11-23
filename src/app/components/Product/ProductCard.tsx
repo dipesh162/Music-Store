@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { AiFillStar, AiOutlineHeart } from 'react-icons/ai';
 
-export default function ProductCard({product}) {
+export default function ProductCard({product}: {product:any}) {
   const [wishListed, setWishListed] = useState(false)
   const handleWishList= ()=>{
     setWishListed(!wishListed)
