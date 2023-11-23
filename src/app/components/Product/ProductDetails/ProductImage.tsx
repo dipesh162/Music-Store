@@ -11,7 +11,7 @@ interface pageProps{
 
 const ProductImage: FC<pageProps> = ({width, height,src,index, handleClick}) =>{
     return(
-        <div className="border-[1px] border-[#8c8c8c] flex justify-center items-center hover:cursor-pointer" onClick={()=>handleClick(index)}>
+        <div className="border-[1px] border-[#8c8c8c] flex justify-center items-center hover:cursor-pointer" onClick={()=>handleClick && handleClick(index)}>
             <Image
                 src={src}
                 width={width ?? 100 }
