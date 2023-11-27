@@ -7,15 +7,17 @@ import { FaRegUser } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 import { CSSTransition } from 'react-transition-group';
 import HeaderData from '../../static/HeaderData'
+import UserMenu from "./UserMenu";
 
 
 export default function Menu(){
 
     const [instrumentsMenu, setInstrumentsMenu] = useState(false)
+    const [usersMenu, setUsersMenu] = useState(true)
 
     return(
         <>
-            <div className="hidden md:flex bg-white justify-between pr-6 relative">
+            <div className="hidden md:flex bg-white max-w-[1280px] mx-auto justify-between pr-6 relative">
                 <Link href='/'>
                     <Image
                         src='/images/music-store.jpg'
@@ -58,11 +60,21 @@ export default function Menu(){
                     </li>
                     <Link href='/'><li className="h-full hover:cursor-pointer text-[#161616] font-semibold flex gap-2 items-center">About</li></Link>
                 </ul>
-                <div className="flex items-center gap-3.5">
-                    <FaRegUser size={22} color="black" className="hover:cursor-pointer"/>
-                    <FaRegHeart size={22} color="black" className="hover:cursor-pointer"/>
-                    <BiShoppingBag size={24} color="black" className="hover:cursor-pointer"/>
+                <div className="flex items-center gap-4">
+                    <div className="hidden md:block relative">
+                        <FaRegUser size={22} color="black" onMouseEnter={()=> setUsersMenu(true)} className="hover:cursor-pointer"/>
+                    </div>
+                    <Link href='/wishlist'><FaRegHeart size={22} color="black" className="hover:cursor-pointer"/></Link>
+                    <Link href='/viewcart'><BiShoppingBag size={24} color="black" className="hover:cursor-pointer"/></Link>
                 </div>
+
+                { usersMenu &&
+                    <div className="absolute top-[86px] z-10 right-3">
+                        <UserMenu
+                            // handleMouseLeave={()=>setUsersMenu(false)}
+                        />
+                    </div>
+                }
             </div>
         </>
     )

@@ -26,9 +26,9 @@ export default function MenuMobile(){
                     />
                 </Link>
                 <div className="flex items-center gap-2">
-                    <FaRegUser size={22} color="black"/>
-                    <FaRegHeart size={22} color="black"/>
-                    <BiShoppingBag size={24} color="black"/>
+                    <div className="hidden md:block"><FaRegUser size={22} color="black"/></div>
+                    <Link href='/wishlist'><FaRegHeart size={22} color="black"/></Link>
+                    <Link href='/viewcart'><BiShoppingBag size={24} color="black"/></Link>
                 </div>
             </div>
             {isDrawerOpen &&

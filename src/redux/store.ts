@@ -4,7 +4,7 @@ import authReducer from './slices/authSlice'
 
 export const store = configureStore({
   reducer: {
-    authReducer
+    auth: authReducer
   },
   devTools: process.env.NODE_ENV !== "production",
 });
