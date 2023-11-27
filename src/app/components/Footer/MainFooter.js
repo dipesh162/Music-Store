@@ -16,7 +16,7 @@ export default function MainFooter(){
             link all the Instruments 
 
             <h3 className="text-[#161616] font-medium">FOR ONLINE ORDER & QUERIES:</h3>
-            Write to ymin.support@ndslindia.com
+            Write to dipeshsingh162@gmail.com
             Call on: 7840825848
             (MON-SAT : 10am - 6pm)
 
