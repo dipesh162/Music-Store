@@ -32,7 +32,7 @@ export default function MenuMobile(){
                 </div>
             </div>
             {isDrawerOpen &&
-                <MenuMobileDrawer/>
+                <MenuMobileDrawer handleDrawer={handleDrawer}/>
             }
         </>
     )

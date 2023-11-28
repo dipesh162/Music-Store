@@ -1,15 +1,39 @@
 import HeaderData from '@/app/static/HeaderData';
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BsChevronDown } from 'react-icons/bs';
+import UserMenu from './UserMenu';
 
-export default function MenuMobileDrawer(){
+export default function MenuMobileDrawer({handleDrawer}){
 
     const [showInstruments, setShowInstruments] = useState(false)
+    const drawerRef = useRef(null)
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+          /**
+           * Alert if clicked on outside of element
+           */
+          function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+            //   alert("You clicked outside of me!");
+              handleDrawer()
+            }
+          }
+          // Bind the event listener
+          document.addEventListener("mousedown", handleClickOutside);
+          return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+          };
+        }, [ref]);
+      }
+
+    useOutsideAlerter(drawerRef);
 
     return(
         <div>
-            <div className="transition duration-300 delay-1000  pb-6 ease-in-out w-[80%] absolute top-0 h-[100vh] overflow-auto bg-slate-50 z-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+            <div ref={drawerRef} className="transition duration-300 delay-1000  pb-6 ease-in-out w-[80%] absolute top-0 h-[100vh] overflow-auto bg-slate-50 z-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+                <UserMenu/>
                 <Link href='/'><h4 className='text-[16px] border-[#ddd] border-b-[1px] py-2 px-4 font-semibold text-[#161616]'>Home</h4></Link>
                 <h4 className='text-[16px] border-[#ddd] flex justify-between items-center border-b-[1px] py-2 px-4 font-semibold text-[#161616]' onClick={()=> setShowInstruments(!showInstruments)}>Musical Instruments <BsChevronDown className={`rotate-${showInstruments ? '180' : '0' }`} size={14} color="black"/></h4>
                     {showInstruments && 

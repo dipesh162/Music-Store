@@ -35,24 +35,33 @@ const UserMenu: FC<pageProps> = ({handleMouseLeave}) =>{
     }
 
     return(
-        <div className="shadow-[0_4.5px_4.5px_rgba(0,0,0,0.19)] bg-white" onMouseLeave={()=> handleMouseLeave && handleMouseLeave()}>
+        <div className="shadow-[0_0.5px_2.5px_rgba(0,0,0,0.19)] bg-white py-4 px-5" onMouseLeave={()=> handleMouseLeave && handleMouseLeave()}>
             <h3 className="font-semibold text-[#161616]">Welcome</h3>
-            <h4 className="text-[#161616]">To your musical world</h4>
+            <h4 className="text-[#161616] text-[14px] mt-[-1px]">To your musical world</h4>
 
             {userAuthState == 'loggedOut' ? 
-                <Link href='/login'>
+                <Link href='/login' className="border-[1px] hover:border-[#161616] p-2 my-3 block text-[14px] text-center font-semibold">
                     LOGIN / SIGNUP
                 </Link>
             : null}
 
             <div className="pt-2 mt-2 border-t-[1px] border-[#e8e8e8]">
                 <Link href='/orders'>
-                    <h4 className="text-[#161616] hover:font-semibold">Orders</h4>
+                    <h4 className="text-[#161616] text-[14px] hover:font-semibold">Orders</h4>
                 </Link>
 
                 <Link href='/wishlist'>
-                    <h4 className="text-[#161616] hover:font-semibold">Wishlist</h4>
+                    <h4 className="text-[#161616] text-[14px] hover:font-semibold">Wishlist</h4>
                 </Link>
+
+                <Link href='/about'>
+                    <h4 className="text-[#161616] text-[14px] hover:font-semibold">About</h4>
+                </Link>
+                
+                <Link href='/contact-us'>
+                    <h4 className="text-[#161616] text-[14px] hover:font-semibold">Contact Us</h4>
+                </Link>
+
 
                 {userAuthState == 'loggedIn' ? 
                     <h4 onClick={handleLogout} className="text-[#161616] hover:font-semibold">logout</h4>

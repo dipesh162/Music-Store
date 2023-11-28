@@ -13,7 +13,7 @@ import UserMenu from "./UserMenu";
 export default function Menu(){
 
     const [instrumentsMenu, setInstrumentsMenu] = useState(false)
-    const [usersMenu, setUsersMenu] = useState(true)
+    const [showUsersMenu, setUsersMenu] = useState(false)
 
     return(
         <>
@@ -31,12 +31,11 @@ export default function Menu(){
                         <div className="flex items-center gap-2 font-semibold">Musical Instruments <BsChevronDown size={14} color="black"/></div>
                         <CSSTransition
                             in={instrumentsMenu}
-                            // in={true}
                             // timeout={2000}
                             classNames="transitions"
                             unmountOnExit
                         >
-                            <div className="absolute left-[50%] -translate-x-1/2 bg-white top-[86px] flex flex-row gap-8 w-max px-9 py-6 z-10" style={{boxShadow: '0 4.5px 4.5px rgba(0,0,0,.19)'}}>
+                            <div className="shadow-[0_0.5px_2.5px_rgba(0,0,0,0.19)] absolute left-[50%] -translate-x-1/2 bg-white top-[88px] flex flex-row gap-8 w-max px-9 py-6 z-10">
                                 {HeaderData.map((data,i)=>(
                                     <div key={i}>
                                         <Link href={data.item.link}>
@@ -61,20 +60,26 @@ export default function Menu(){
                     <Link href='/'><li className="h-full hover:cursor-pointer text-[#161616] font-semibold flex gap-2 items-center">About</li></Link>
                 </ul>
                 <div className="flex items-center gap-4">
-                    <div className="hidden md:block relative">
-                        <FaRegUser size={22} color="black" onMouseEnter={()=> setUsersMenu(true)} className="hover:cursor-pointer"/>
+                    <div className="hidden md:flex items-center h-[100%] relative hover:cursor-pointer" onMouseEnter={()=> setUsersMenu(true)} onMouseLeave={()=> setUsersMenu(false)}>
+                        <FaRegUser size={22} color="black"/>
+                        {showUsersMenu && <div className="after:absolute after:right-[-7px] after:bottom-[0px] after:bg-[#161616] after:h-[4px] after:w-[35px]"></div>}
                     </div>
                     <Link href='/wishlist'><FaRegHeart size={22} color="black" className="hover:cursor-pointer"/></Link>
                     <Link href='/viewcart'><BiShoppingBag size={24} color="black" className="hover:cursor-pointer"/></Link>
                 </div>
 
-                { usersMenu &&
-                    <div className="absolute top-[86px] z-10 right-3">
-                        <UserMenu
-                            // handleMouseLeave={()=>setUsersMenu(false)}
-                        />
-                    </div>
-                }
+                <CSSTransition
+                    in={showUsersMenu}
+                    timeout={2000}
+                    classNames="transitions"
+                    unmountOnExit
+                >
+                        <div className="absolute top-[88px] z-10 right-3" onMouseEnter={()=>setUsersMenu(true)}>
+                            <UserMenu
+                                handleMouseLeave={()=>setUsersMenu(false)}
+                            />
+                        </div>
+                </CSSTransition>
             </div>
         </>
     )
