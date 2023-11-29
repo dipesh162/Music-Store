@@ -36,8 +36,15 @@ const UserMenu: FC<pageProps> = ({handleMouseLeave}) =>{
 
     return(
         <div className="shadow-[0_0.5px_2.5px_rgba(0,0,0,0.19)] bg-white py-4 px-5" onMouseLeave={()=> handleMouseLeave && handleMouseLeave()}>
-            <h3 className="font-semibold text-[#161616]">Welcome</h3>
-            <h4 className="text-[#161616] text-[14px] mt-[-1px]">To your musical world</h4>
+            {userAuthState == 'loggedOut' ?
+                <>
+                    <h3 className="font-semibold text-[#161616] text-[15px]">Welcome</h3>
+                    <h4 className="text-[#161616] text-[14px] mt-[-2px]">To your musical world</h4>
+                </>:
+                <>
+                    <h3 className="font-semibold text-[#161616] text-[15px]">Welcome {user.firstName}</h3>
+                </>
+            }
 
             {userAuthState == 'loggedOut' ? 
                 <Link href='/login' className="border-[1px] hover:border-[#161616] p-2 my-3 block text-[14px] text-center font-semibold">
