@@ -8,7 +8,7 @@ interface pageProps{
 
 const fetchData = async (slug: string) =>{
     try {
-        const res = await axios.get(`${process.env.DOMAIN}/api/product/fetch`,{
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/api/product/fetch`,{
             params: {
                 slug: slug
             }
