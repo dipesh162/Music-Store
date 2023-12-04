@@ -11,7 +11,8 @@ interface Product {
     description: string;
     price: number;
     ratings: number;
-    images: string[] 
+    images: string[];
+    handleRemoveItem?: () => void
 }
 
 interface pageProps{
