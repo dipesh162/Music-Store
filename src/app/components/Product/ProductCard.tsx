@@ -21,9 +21,9 @@ interface Product {
   price: number;
   ratings: number;
   images: string[];
-  cta: Ctas;
+  cta?: Ctas;
   quantity?: number;
-  handleRemoveItem: () => void
+  handleRemoveItem?: () => void
 }
 
 
