@@ -9,6 +9,58 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide your last name"]
     },
+    billingAddress:{
+        country:{
+            type: String,
+            required: [false, "Please provide country"]
+        },
+        'street 1':{
+            type: String,
+            required: [false, "Please provide street 1"]
+        },
+        'street 2':{
+            type: String,
+            required: [false, "Please provide street 2"]
+        },
+        city:{
+            type: String,
+            required: [false, "Please provide city"]
+        },
+        state:{
+            type: String,
+            required: [false, "Please provide state"]
+        },
+        zipCode:{
+            type: Number,
+            required: [false, "Please provide zipCode"]
+        },
+    },
+    shippingAddresses:[{
+        country:{
+            type: String,
+            required: [false, "Please provide country"]
+        },
+        'street 1':{
+            type: String,
+            required: [false, "Please provide street 1"]
+        },
+        'street 2':{
+            type: String,
+            required: [false, "Please provide street 2"]
+        },
+        city:{
+            type: String,
+            required: [false, "Please provide city"]
+        },
+        state:{
+            type: String,
+            required: [false, "Please provide state"]
+        },
+        zipCode:{
+            type: Number,
+            required: [false, "Please provide zipCode"]
+        },
+    }],
     email:{
         type: String,
         required: [true, "Please provide a email"],
@@ -25,6 +77,33 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    wishlist: [
+        {
+          product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product', // Reference to the Product model
+          },
+          quantity: {
+            type: Number,
+            default: 1,
+          },
+        },
+    ],
+    cart: [
+        {
+            product: {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: 'Product', // Reference to the Product model
+            },
+            quantity: {
+              type: Number,
+              default: 1,
+            },
+          },        
+    ],
+    token: {
+        type: String,
     },
     forgotPasswordToken: String,
     forgotPasswordTokenExpiry: Date,
