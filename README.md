@@ -12,7 +12,7 @@ yarn dev
 pnpm dev
 ```
 
-Open [${process.env.DOMAIN}](${process.env.DOMAIN}) with your browser to see the result.
+Open [${process.env.NEXT_PUBLIC_DOMAIN}](${process.env.NEXT_PUBLIC_DOMAIN}) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
