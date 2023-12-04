@@ -47,7 +47,7 @@ const UserMenu: FC<pageProps> = ({handleMouseLeave}) =>{
             }
 
             {userAuthState == 'loggedOut' ? 
-                <Link href='/login' className="border-[1px] hover:border-[#161616] p-2 my-3 block text-[14px] text-center font-semibold">
+                <Link href='/login' className="border-[1px] border-[#616364] hover:bg-[#616364] text-[#616364] hover:text-[#fff] p-2 my-3 block text-[14px] text-center font-semibold">
                     LOGIN / SIGNUP
                 </Link>
             : null}
