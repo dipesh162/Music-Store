@@ -11,7 +11,8 @@ export type FormDataType = {
     description: string;
     price: number;
     ratings: number;
-    images: string[]  
+    images: string[];
+    quantity: number;  
 }
 
 export default function AddProduct(){
@@ -25,7 +26,8 @@ export default function AddProduct(){
         description: '',
         price: 0,
         ratings: 0,
-        images: []
+        images: [],
+        quantity: 0
     }
     const [formData, setFormData] = useState<FormDataType>(initialFormValues)
 
@@ -98,9 +100,9 @@ export default function AddProduct(){
             try {
                 const res = await axios.post("/api/product/add", {
                     ...formData,
-                    brand: toLowercase(formData.brand),
-                    category: toLowercase(formData.category).replaceAll(' ','-'),
-                    subCategory: (toLowercase(formData.subCategory)).replaceAll(' ','-'),
+                    brand: formData.brand && toLowercase(formData.brand),
+                    category: formData.brand && toLowercase(formData.category).replaceAll(' ','-'),
+                    subCategory: formData.brand && (toLowercase(formData.subCategory)).replaceAll(' ','-'),
                     images: imageUploadResponse
                 });
                 if(res.data.success){
@@ -188,6 +190,18 @@ export default function AddProduct(){
                             setFormData({...formData, price: Number(e.target.value)})
                         }}
                         value={formData.price || ''} 
+                    />
+                </div>
+                <div className="flex justify-center gap-2">
+                    <label className="text-black flex-1" htmlFor="price">Quantity:</label>
+                    <input 
+                        className="border-[#000000] flex-2 border-[1px]" 
+                        type="number" 
+                        name='quantity'
+                        onChange={(e)=>{
+                            setFormData({...formData, quantity: Number(e.target.value)})
+                        }}
+                        value={formData.quantity || ''} 
                     />
                 </div>
                 <div className="flex justify-center gap-2">
