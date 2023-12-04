@@ -1,20 +1,21 @@
 import { FC } from "react";
 import ProductCard from "../Product/ProductCard";
 
-interface FormDataType {
+interface Product {
     _id: string;
     name: string;
     brand: string;
+    slug: string;
     category: string;
     subCategory: string;
     description: string;
     price: number;
     ratings: number;
-    images: string[]  
+    images: string[] 
 }
 
 interface pageProps{
-    products: [FormDataType]
+    products: [Product]
 }
 
 const ProductsByCategory: FC<pageProps> = ({products}) =>{
@@ -24,7 +25,7 @@ const ProductsByCategory: FC<pageProps> = ({products}) =>{
             {products.map((product:any,i:number)=>(
                 <ProductCard
                     key={i}
-                    product={product}
+                    product={{...product, cta:'wishlist'}}
                 />
             ))}
         </>
