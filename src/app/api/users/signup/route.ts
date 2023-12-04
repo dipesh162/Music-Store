@@ -14,9 +14,9 @@ export async function POST(request: NextRequest){
         console.log(reqBody)
 
         // Check if user already exists
-        const user = await User.findOne({email})
+        const userExisted = await User.findOne({email})
 
-        if(user){
+        if(userExisted){
             return NextResponse.json({error: "User already exists"}, {status: 400})
         }
 
@@ -24,28 +24,32 @@ export async function POST(request: NextRequest){
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
 
-        const newUser = new User({
+        let user = new User({
             firstName,
             lastName,
             email,
             password: hashedPassword
         })
 
-        const savedUser = await newUser.save()
-        console.log(savedUser)
+        let savedUser = await user.save()
 
+        const hashedToken = await bcryptjs.hash(savedUser._id.toString(), 10)
+        user.token = hashedToken
+        const updatedUser = await user.save()
+        console.log(updatedUser)
 
         // send verification email
-        await sendEmail({email, emailType: "VERIFY", userId: savedUser._id})
-        userId: savedUser._id
+        // await sendEmail({email, emailType: "VERIFY", userId: savedUser._id})
+        // userId: savedUser._id
 
         return NextResponse.json({
             message: "User created successfully",
             success: true,
             user : {
-                firstName: savedUser.firstName,
-                lastName: savedUser.lastName,
-                email: savedUser.email,
+                firstName: updatedUser.firstName,
+                lastName: updatedUser.lastName,
+                email: updatedUser.email,
+                token: updatedUser.token
             }
         })
     } catch (err: any){
