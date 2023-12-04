@@ -24,7 +24,7 @@ export default function SignupForm(){
         try {
             setLoading(true)
             const res = await axios.post("/api/users/signup", user)
-            dispatch(saveUserInfo({ user: res.data }));
+            dispatch(saveUserInfo({ user: res.data.user }));
             router.push('/login')
         } catch (err:any){
             console.log("Signup failed",err.message )
