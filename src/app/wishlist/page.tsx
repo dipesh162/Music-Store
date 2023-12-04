@@ -13,7 +13,6 @@ export default function Wishlist(){
 
     const fetchData = async () =>{
         try {
-            console.log('try')
             const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/api/product/wishlist`,{
                 headers: {
                     'Accept': 'application/json',
