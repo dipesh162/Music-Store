@@ -1,11 +1,12 @@
 'use client'
-import { FC, useState } from 'react';
+
+// React
+import { FC } from 'react';
 import { BiShoppingBag } from 'react-icons/bi';
-import { FaRegHeart } from 'react-icons/fa';
-import { AiFillStar, AiOutlineHeart } from 'react-icons/ai';
-import { FaHeart } from "react-icons/fa";
-import axios from 'axios';
-import { useAppSelector } from '@/redux/hooks';
+import { AiFillStar } from 'react-icons/ai';
+
+// Components
+import WishlistBtn from './WishlistBtn';
 
 export interface FormDataType {
     _id: string;
@@ -26,22 +27,6 @@ interface pageProps{
 const ProductInfo: FC<pageProps> = ({product}) =>{
 
     const props = {width: 400, height: 250, zoomWidth: 500, img: "1.jpg"};
-    const [wishListed, setWishlisted] = useState(false)
-
-    const user:any = useAppSelector((state)=> state.auth.user)
-
-    const handleWishlisting = ()=>{
-        const res = axios.post(`/api/product/wishlist`,{
-            productId: product._id
-        },{
-            headers: {
-                'Accept': 'application/json',
-                'Authorization': user.token ? `Bearer ${user.token}` : '',
-                'token': user.token ? user.token : '',
-              },
-        })
-        setWishlisted(!wishListed)
-    }
 
     return(
         <div className='basis-full text-center md:text-left'>
@@ -58,12 +43,7 @@ const ProductInfo: FC<pageProps> = ({product}) =>{
                 <button className='bg-[#616364] font-semibold border-[2px] border-[#616364]  text-white text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5'>
                     <BiShoppingBag size={20}/> <span className='text-[14px]'>ADD TO CART</span>
                 </button>
-                <button disabled={wishListed} onClick={handleWishlisting} className={`${wishListed? 'bg-[#616364]' : 'bg-[#fff]'} ${wishListed ? 'text-[#fff]': 'text-[#616364]'} font-semibold border-[#616364] border-[2px] text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5`}>
-                    {wishListed ?
-                        <FaHeart size={20}/> :
-                    <FaRegHeart size={20}/>}
-                    <span className='text-[14px]'>{wishListed? 'WISHLISTED': 'WISHLIST'}</span>
-                </button>
+                <WishlistBtn productId={product._id} btnType='button'/>
             </div>
 
             <p className='text-[#191d1f] text-left text-[14px]'>{product.description}</p>

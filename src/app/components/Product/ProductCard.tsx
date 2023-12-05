@@ -1,9 +1,14 @@
 'use client'
+
+// React
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { AiFillStar, AiOutlineHeart } from 'react-icons/ai';
+import { AiFillStar } from 'react-icons/ai';
 import { RxCross2 } from "react-icons/rx";
+
+// Components
+import WishlistBtn from './ProductDetails/WishlistBtn';
 
 enum Ctas {
   wishlist = 'wishlist',
@@ -36,7 +41,10 @@ export default function ProductCard({product,handleRemoveItem}: {product:Product
   return (
     <div className='flex flex-col hover:shadow-[0_3px_16px_0px_rgba(0,0,0,0.11)] w-[300px] relative'>
         {product.cta == 'wishlist' ? 
-          <AiOutlineHeart className='absolute right-2 top-2 hover:cursor-pointer' onClick={handleWishList} size={22} color={wishListed ? 'red': ''}/> :
+          <WishlistBtn
+            productId={product._id}
+            btnType='icon'
+          /> :
           <RxCross2 className='absolute right-2 top-2 hover:cursor-pointer' onClick={()=>handleRemoveItem && handleRemoveItem(product._id)} size={22} /> 
         }
         <Link href={`/instruments/${product.slug}`}>

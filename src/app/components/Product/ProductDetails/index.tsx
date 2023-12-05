@@ -1,6 +1,9 @@
+// React
+import { FC } from 'react';
+
+// Components
 import ProductImages from './ProductImages'
 import ProductInfo from './ProductInfo'
-import { FC } from 'react';
 
 export interface FormDataType {
     _id: string;

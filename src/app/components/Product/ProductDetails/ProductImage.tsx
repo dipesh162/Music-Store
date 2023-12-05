@@ -1,7 +1,11 @@
 'use client'
-import React, { FC, useState } from 'react'
+
+// React
+import React, { FC } from 'react'
 import Image from "next/image";
-import { AiFillStar, AiOutlineHeart } from 'react-icons/ai';
+
+// Components
+import WishlistBtn from './WishlistBtn';
 
 interface pageProps{
     width?: number;
@@ -10,15 +14,11 @@ interface pageProps{
     index?: Number;
     handleClick?: Function;
     wishListIcon: boolean;
+    productId: string;
     cursor: string | null;
 }
 
-const ProductImage: FC<pageProps> = ({width, height,src,index, wishListIcon, cursor, handleClick}) =>{
-
-    const [wishListed, setWishListed] = useState(false)
-    const handleWishList= ()=>{
-      setWishListed(!wishListed)
-    }
+const ProductImage: FC<pageProps> = ({width, height,src,index, wishListIcon, cursor, productId, handleClick}) =>{
 
     return(
         <div className={`cursor-${cursor} relative border-[1px] border-[#8c8c8c] flex justify-center items-center hover:cursor-pointer`} onClick={()=>handleClick && handleClick(index)}>
@@ -28,7 +28,7 @@ const ProductImage: FC<pageProps> = ({width, height,src,index, wishListIcon, cur
                 height={height ?? 100}
                 alt='product image'
             />
-            { wishListIcon && <AiOutlineHeart className='md:hidden absolute right-2 top-2 hover:cursor-pointer' onClick={handleWishList} size={28} color={wishListed ? 'red': ''}/> }
+            { wishListIcon && <WishlistBtn productId={productId} btnType='icon' /> }
         </div>
     )
 }

@@ -1,5 +1,9 @@
 'use client'
+
+// React
 import React, { FC, useState } from 'react'
+
+// Components
 import ProductImage from './ProductImage'
 // import ReactImageZoom from 'react-image-zoom';
 
@@ -46,8 +50,9 @@ const ProductImages: FC<pageProps> = ({product}) =>{
                         index={i}
                         key={i}
                         handleClick={handleClick}
-                        wishListIcon={true}
+                        wishListIcon={false}
                         cursor='pointer'
+                        productId={product._id}
                     />
                 ))}
                 <div 
@@ -62,6 +67,7 @@ const ProductImages: FC<pageProps> = ({product}) =>{
                 height={440}   
                 wishListIcon={true}
                 cursor='default'
+                productId={product._id}
             />
 
             {/* <ReactImageZoom {...props} /> */}
