@@ -11,12 +11,11 @@ export async function POST(request: NextRequest){
     try{
         const reqBody = await request.json()
         const {firstName, lastName, email, password} = reqBody
-        console.log(reqBody)
 
         // Check if user already exists
-        const userExisted = await User.findOne({email})
+        const userExists = await User.findOne({email})
 
-        if(userExisted){
+        if(userExists){
             return NextResponse.json({error: "User already exists"}, {status: 400})
         }
 
@@ -36,13 +35,13 @@ export async function POST(request: NextRequest){
         const hashedToken = await bcryptjs.hash(savedUser._id.toString(), 10)
         user.token = hashedToken
         const updatedUser = await user.save()
-        console.log(updatedUser)
 
         // send verification email
         // await sendEmail({email, emailType: "VERIFY", userId: savedUser._id})
         // userId: savedUser._id
 
-        return NextResponse.json({
+
+        const response = NextResponse.json({
             message: "User created successfully",
             success: true,
             user : {
@@ -52,6 +51,11 @@ export async function POST(request: NextRequest){
                 token: updatedUser.token
             }
         })
+        response.cookies.set("token",updatedUser.token, {
+            httpOnly: true
+        })
+
+        return response
     } catch (err: any){
         return NextResponse.json({error: err.message}, {status: 500})
     }
