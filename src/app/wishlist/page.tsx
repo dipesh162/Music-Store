@@ -1,8 +1,12 @@
 'use client'
-import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ProductCard from "../components/Product/ProductCard";
+
+// Hooks
+import { useAppSelector } from "@/redux/hooks";
+
+// Components
+import WishlistCard from "../components/Product/WishlistCard";
 
 
 
@@ -50,13 +54,13 @@ export default function Wishlist(){
     return(
         <>
             {wishlist?.length>0 ? 
-                <p><b>My Wishlist</b> {wishlist.length} {wishlist.length>1 ? 'items': 'item'} </p> : null
+                <p className="text-[18px]"><b>My Wishlist</b> {wishlist.length} {wishlist.length>1 ? 'items': 'item'} </p> : null
             }
 
-            {wishlist?.map((product:any, i:number)=>(
-                <ProductCard
+            {wishlist?.map((wishlist:any, i:number)=>(
+                <WishlistCard
                     key={i}
-                    product={{...product.product, cta:'cart',quantity: product.quantity}}
+                    product={wishlist.product}
                     handleRemoveItem={handleRemoveItem}
                 />
             ))

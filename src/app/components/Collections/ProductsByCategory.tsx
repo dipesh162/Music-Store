@@ -1,4 +1,7 @@
+// React
 import { FC } from "react";
+
+// Components
 import ProductCard from "../Product/ProductCard";
 
 interface Product {
@@ -12,7 +15,6 @@ interface Product {
     price: number;
     ratings: number;
     images: string[];
-    handleRemoveItem?: () => void
 }
 
 interface pageProps{
@@ -26,7 +28,7 @@ const ProductsByCategory: FC<pageProps> = ({products}) =>{
             {products.map((product:any,i:number)=>(
                 <ProductCard
                     key={i}
-                    product={{...product, cta:'wishlist'}}
+                    product={product}
                 />
             ))}
         </>

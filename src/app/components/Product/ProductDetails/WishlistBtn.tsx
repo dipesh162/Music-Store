@@ -1,11 +1,18 @@
+'use client'
+
 // React
 import axios from 'axios';
+import { FC, useEffect, useState } from "react";
+
+// Icons
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from 'react-icons/fa';
-import { useAppSelector } from '@/redux/hooks';
-import { FC, useEffect, useState } from "react";
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from "react-icons/ai";
+
+// Hooks
+import { useAppSelector } from '@/redux/hooks';
+
 
 
 interface pageProps{
