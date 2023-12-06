@@ -67,7 +67,7 @@ const WishlistBtn: FC<pageProps> = ({productId,btnType}) =>{
 
                 <>
                     {wishListed ?
-                        <AiFillHeart className='absolute right-2 top-2 hover:cursor-pointer' onClick={handleWishlisting} size={22} color='#616364'/>:
+                        <AiFillHeart className='absolute right-2 top-2 hover:cursor-pointer' size={22} color='#616364'/>:
                         <AiOutlineHeart className='absolute right-2 top-2 hover:cursor-pointer' onClick={handleWishlisting} size={22}/>
                     }
                 </>

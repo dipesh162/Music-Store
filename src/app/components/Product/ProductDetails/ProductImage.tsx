@@ -28,7 +28,11 @@ const ProductImage: FC<pageProps> = ({width, height,src,index, wishListIcon, cur
                 height={height ?? 100}
                 alt='product image'
             />
-            { wishListIcon && <WishlistBtn productId={productId} btnType='icon' /> }
+            { wishListIcon && 
+                <div className='md:hidden'>
+                    <WishlistBtn productId={productId} btnType='icon' /> 
+                </div>
+            }
         </div>
     )
 }
