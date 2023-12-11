@@ -1,11 +1,16 @@
 'use client';
+
+// React
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {useRouter} from 'next/navigation';
 import  axios from 'axios';
 import { toast } from 'react-hot-toast';
-import { useAppDispatch } from '@/redux/hooks';
+
+// Redux
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { saveUserInfo } from '@/redux/slices/authSlice';
+import { addToCartThunk } from '@/redux/thunks/cartThunks';
 
 
 export default function LoginForm(){
@@ -19,14 +24,18 @@ export default function LoginForm(){
     const [loading, setLoading] = useState(false)
 
     const dispatch = useAppDispatch();
+    const cartProducts = useAppSelector((state)=> state.cart.cart)
 
     const onLogin = async ()=>{
         try {
             setLoading(true)
             const res = await axios.post("/api/users/login", user);
-            dispatch(saveUserInfo({ user: res.data.user }));
-            toast.success("Login SUccess")
-            router.push('/profile')
+            if(res.data.success){
+                dispatch(saveUserInfo({ user: res.data.user })); // saving user's data in redux
+                dispatch(addToCartThunk({type: 'loggedIn', products: cartProducts})) // saving cart info in backend
+                toast.success("Login Success")
+                router.push('/')
+            }
         } catch (error: any) {
             console.log("login failed", error.message)
             toast.error(error.message)

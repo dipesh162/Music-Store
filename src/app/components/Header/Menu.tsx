@@ -1,3 +1,4 @@
+// React
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -6,11 +7,20 @@ import { BsChevronDown } from 'react-icons/bs';
 import { FaRegUser } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 import { CSSTransition } from 'react-transition-group';
+
+// Static data
 import HeaderData from '../../static/HeaderData'
+
+// Components
 import UserMenu from "./UserMenu";
+
+// Redux
+import { useAppSelector } from "@/redux/hooks";
 
 
 export default function Menu(){
+    const cart = useAppSelector((state)=> state.cart.cart)
+    const cartLength = cart.reduce((acc,item)=>{ return acc + item.quantity },0)
 
     const [instrumentsMenu, setInstrumentsMenu] = useState(false)
     const [showUsersMenu, setUsersMenu] = useState(false)
@@ -65,7 +75,10 @@ export default function Menu(){
                         {showUsersMenu && <div className="after:absolute after:right-[-7px] after:bottom-[0px] after:bg-[#161616] after:h-[4px] after:w-[35px]"></div>}
                     </div>
                     <Link href='/wishlist'><FaRegHeart size={22} color="black" className="hover:cursor-pointer"/></Link>
-                    <Link href='/viewcart'><BiShoppingBag size={24} color="black" className="hover:cursor-pointer"/></Link>
+                    <Link href='/viewcart' className='relative'>
+                        <BiShoppingBag size={24} color="black" className="hover:cursor-pointer"/>
+                        {cartLength && <div className='flex justify-center items-center absolute top-[-8px] left-3.5 rounded-[50%] font-bold text-white text-[9px] bg-[#616364] h-[18px] w-[18px]'>{cartLength}</div>}
+                    </Link>
                 </div>
 
                 <CSSTransition

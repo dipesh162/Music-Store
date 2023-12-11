@@ -11,23 +11,26 @@ connect()
 
 export async function DELETE(request: NextRequest,{params}: any) {
     try{
+
         const token = request.headers.get('token')
         const user = await User.findOne({token})
         if(!user){
             return NextResponse.json({error: "User not found"}, {status: 404})
         }
+        const userId = user._id
 
-        const {id : productId} = params
+        const {ids} = params
+        const productIds = ids.split(',')
 
-        await User.findByIdAndUpdate(user._id, {
-            $pull: {
-              wishlist: { product: productId }
-            }
-          }, { new: true })
+        await User.updateOne(
+            { _id: userId },
+            { $pull: { cart: { productId: { $in: productIds } } } },
+
+        );
 
         return NextResponse.json({
             success:true,
-            message: 'Product successfully removed from wishlist'
+            message: 'Products successfully removed from cart'
         })
 
     } catch (err: any){

@@ -1,11 +1,19 @@
 'use client'
+
+// React
+import {toast} from "react-hot-toast";
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 import axios from "axios"
 import { FC, useEffect, useState } from "react"
+
+// Hooks
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
+
+// Redux
 import { reset } from "@/redux/slices/authSlice";
-import {toast} from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { emptyCart } from "@/redux/slices/cartSlice";
+
 
 interface pageProps{
     handleMouseLeave?: Function
@@ -26,8 +34,9 @@ const UserMenu: FC<pageProps> = ({handleMouseLeave}) =>{
         try {
             await axios.get('/api/users/logout')
             dispatch(reset())
+            dispatch(emptyCart()) // empty cart on logout
             toast.success('Logout successful')
-            router.push('/login')
+            router.push('/')
         } catch (error:any) {
             console.log(error.message)
             toast.error(error.message)

@@ -3,32 +3,14 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react'
 import { BsChevronDown } from 'react-icons/bs';
 import UserMenu from './UserMenu';
+import useOutsideAlerter from '@/hooks/useOutsideDetect';
 
 export default function MenuMobileDrawer({handleDrawer}){
 
     const [showInstruments, setShowInstruments] = useState(false)
     const drawerRef = useRef(null)
-    function useOutsideAlerter(ref) {
-        useEffect(() => {
-          /**
-           * Alert if clicked on outside of element
-           */
-          function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-            //   alert("You clicked outside of me!");
-              handleDrawer()
-            }
-          }
-          // Bind the event listener
-          document.addEventListener("mousedown", handleClickOutside);
-          return () => {
-            // Unbind the event listener on clean up
-            document.removeEventListener("mousedown", handleClickOutside);
-          };
-        }, [ref]);
-      }
 
-    useOutsideAlerter(drawerRef);
+    useOutsideAlerter(drawerRef,handleDrawer);
 
     return(
         <div>

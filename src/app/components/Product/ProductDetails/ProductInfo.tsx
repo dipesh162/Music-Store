@@ -1,12 +1,23 @@
 'use client'
 
 // React
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+// Icons
 import { BiShoppingBag } from 'react-icons/bi';
 import { AiFillStar } from 'react-icons/ai';
 
 // Components
 import WishlistBtn from './WishlistBtn';
+
+// Hooks
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+
+// Redux
+import { addToCartThunk } from '@/redux/thunks/cartThunks';
+
 
 export interface FormDataType {
     _id: string;
@@ -26,7 +37,31 @@ interface pageProps{
 
 const ProductInfo: FC<pageProps> = ({product}) =>{
 
+    const dispatch = useAppDispatch();
+    const user = useAppSelector((state)=> state.auth.user)
+    const cart = useAppSelector((state)=> state.cart.cart)
+
+    const handleCheckProductInCart = () =>{
+        return cart.some((item)=> item.productId == product._id)
+    }
+    const [addedToCart, setAddedToCart] = useState(cart.length>0 ? handleCheckProductInCart() : false)
+
+    const router = useRouter()
+    const handleRedirectToCart = ()=>{
+        router.push(`${process.env.NEXT_PUBLIC_DOMAIN}/viewcart`)
+    }
+
     const props = {width: 400, height: 250, zoomWidth: 500, img: "1.jpg"};
+
+    const handleCart = () =>{
+        if(!user.token){ // user is logged out
+            dispatch(addToCartThunk({type: 'loggedOut', productId: product._id, quantity: 1}))
+        } else { // user is logged in
+            dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId: product._id, quantity: 1 }]}))
+        }
+        setAddedToCart(true)
+        // handleRedirectToCart()
+    }
 
     return(
         <div className='basis-full text-center md:text-left'>
@@ -40,9 +75,14 @@ const ProductInfo: FC<pageProps> = ({product}) =>{
             <p className='-mt-[8px] text-[14px]'>Inclusive of all taxes</p>
 
             <div className="hidden md:flex gap-3 my-3 mx-0 justify-center items-center md:justify-normal">
-                <button className='bg-[#616364] font-semibold border-[2px] border-[#616364]  text-white text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5'>
-                    <BiShoppingBag size={20}/> <span className='text-[14px]'>ADD TO CART</span>
-                </button>
+                {!addedToCart ?
+                    <button onClick={handleCart} className='bg-[#616364] font-semibold border-[2px] border-[#616364]  text-white text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5'>
+                        <BiShoppingBag size={20}/> <span className='text-[14px]'>ADD TO CART</span>
+                    </button> :
+                    <Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/viewcart`} className='bg-[#616364] font-semibold border-[2px] border-[#616364]  text-white text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5'>
+                        <BiShoppingBag size={20}/> <span className='text-[14px]'>GO TO CART</span>
+                    </Link>
+                }
                 <WishlistBtn productId={product._id} btnType='button'/>
             </div>
 

@@ -20,15 +20,12 @@ interface Product {
   images: string[];
   quantity?: number;
   handleRemoveItem?: () => void
+  handleCart?: () => void
 }
 
 
-export default function WishlistCard({product,handleRemoveItem}: {product:Product,handleRemoveItem?: (id: string) => void}) {
-  
-  const handleCart = ()=>{
-    console.log('api to move item to cart')
-  }
-  
+export default function WishlistCard({product,handleRemoveItem,handleCart}: {product:Product,handleRemoveItem?: (id: string) => void, handleCart?: (id:string) => void}) {
+
   return (
     <div className='flex flex-col hover:shadow-[0_3px_16px_0px_rgba(0,0,0,0.11)] w-[300px] relative'>
         <RxCross2 className='absolute right-2 top-2 hover:cursor-pointer' onClick={()=>handleRemoveItem && handleRemoveItem(product._id)} size={22} /> 
@@ -51,7 +48,7 @@ export default function WishlistCard({product,handleRemoveItem}: {product:Produc
           &#8377;{(product.price).toLocaleString()}
         </Link>
 
-        <h3 onClick={handleCart}>Move To Cart</h3>
+        <h3 onClick={()=> handleCart && handleCart(product._id)}>Move To Cart</h3>
     </div>
   )
 }
