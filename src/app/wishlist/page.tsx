@@ -41,7 +41,7 @@ export default function Wishlist(){
     }
 
     useEffect(()=>{
-        user.authTokens && fetchData()
+        user.token && fetchData()
     },[])
 
     const handleRemoveItem = async (id: string) =>{
@@ -70,7 +70,7 @@ export default function Wishlist(){
 
     return(
         <>
-            {!user.authTokens ?
+            {!user.token ?
                 <h3 className="text-center mt-4">Please <Link href='/login' className="font-semibold">login</Link> to add items in wishlist</h3> :
             
                 !isLoading ?

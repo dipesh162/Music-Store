@@ -68,10 +68,11 @@ export default function ViewCart(){
             {!isLoading ?
                 <>
                     { cartProducts.length>0 ?
-                        <div className="flex">
+                        <div className="flex flex-col md:flex-row md:justify-around mt-4">
                             <div>
-                                {cartProducts.map((cartProd)=>(
+                                {cartProducts.map((cartProd:any,i:number)=>(
                                     <CartCard
+                                        key={i}
                                         userAuthState={user.token ? 'loggedIn' : 'loggedOut'}
                                         product={cartProd}
                                         handleDelete={handleDelete}

@@ -77,7 +77,7 @@ export default function Menu(){
                     <Link href='/wishlist'><FaRegHeart size={22} color="black" className="hover:cursor-pointer"/></Link>
                     <Link href='/viewcart' className='relative'>
                         <BiShoppingBag size={24} color="black" className="hover:cursor-pointer"/>
-                        {cartLength && <div className='flex justify-center items-center absolute top-[-8px] left-3.5 rounded-[50%] font-bold text-white text-[9px] bg-[#616364] h-[18px] w-[18px]'>{cartLength}</div>}
+                        {cartLength>0 && <div className='flex justify-center items-center absolute top-[-8px] left-3.5 rounded-[50%] font-bold text-white text-[9px] bg-[#616364] h-[18px] w-[18px]'>{cartLength}</div>}
                     </Link>
                 </div>
 

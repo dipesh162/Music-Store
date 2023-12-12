@@ -1,12 +1,20 @@
+// React
 import React, { useState } from 'react'
 import Image from "next/image";
 import Link from "next/link";
+
+// Icons
 import { BiShoppingBag } from 'react-icons/bi';
 import { FaRegUser } from 'react-icons/fa';
 import { FaRegHeart } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
+
+// Components
 import MenuMobileDrawer from './MenuMobileDrawer'
+
+// Hooks
 import { useAppSelector } from '@/redux/hooks';
+
 
 export default function MenuMobile(){
     const cart = useAppSelector((state)=> state.cart.cart)
@@ -33,7 +41,7 @@ export default function MenuMobile(){
                     <Link href='/wishlist'><FaRegHeart size={22} color="black"/></Link>
                     <Link href='/viewcart' className='relative'>
                         <BiShoppingBag size={24} color="black"/>
-                        {cartLength && <div className='flex justify-center items-center absolute top-[-8px] left-3 rounded-[50%] font-bold text-white text-[8px] bg-[#616364] h-4 w-4'>{cartLength}</div>}
+                        {cartLength>0 && <div className='flex justify-center items-center absolute top-[-8px] left-3 rounded-[50%] font-bold text-white text-[8px] bg-[#616364] h-4 w-4'>{cartLength}</div>}
                     </Link>
                 </div>
             </div>

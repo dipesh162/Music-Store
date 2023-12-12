@@ -1,7 +1,7 @@
 // Icons
 import { FaRegHeart } from "react-icons/fa6";
 
-export default function(){
+export default function EmptyWishlist(){
     return(
         <div className="flex flex-col items-center mt-4">
             <FaRegHeart size={100}/>
