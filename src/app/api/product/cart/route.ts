@@ -16,14 +16,14 @@ export async function GET(request: NextRequest) {
         const searchParams = request.nextUrl.searchParams
 
         // Iterate over keys and reconstruct the array of objects
-        const cart = Array.from(searchParams.entries()).reduce((acc, [key, value]) => {
+        const cart = Array.from(searchParams.entries()).reduce((acc:any, [key, value]) => {
             const match = key.match(/^cart\[(\d+)\]\[(\w+)\]$/);
             if (match) {
                 const index = parseInt(match[1], 10);
                 const property = match[2];
         
                 if (!acc[index]) {
-                acc[index] = {};
+                    acc[index] = {};
                 }
         
                 acc[index][property] = value;
