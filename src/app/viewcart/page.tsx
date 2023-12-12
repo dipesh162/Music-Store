@@ -47,7 +47,7 @@ export default function ViewCart(){
 
     const handleUpdateCart= (productIds: any)=>{
         let idsToRemove = productIds
-        let updatedCart: any = cartProducts.filter(item => !idsToRemove.includes(item._id));
+        let updatedCart: any = cartProducts.filter((item:any,i:number) => !idsToRemove.includes(item._id));
         setCartProducts(updatedCart)
     }
 
