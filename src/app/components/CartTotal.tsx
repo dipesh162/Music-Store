@@ -11,13 +11,13 @@ export default function CartTotal({cartProducts}:any){
 
     function calculateTotal(){
         if(cartProducts.length>0){
-            const totalAmount = cartProducts.reduce((acc:any,item:number)=>{
-                let cartItem = cart.find((cart)=> cart.productId == item._id)
+            const totalAmount = cartProducts.reduce((acc:any,item:any)=>{
+                let cartItem:any = cart.find((cart)=> cart.productId == item._id)
                 return acc + ((cartItem.quantity)*(item.price))
             },0)
             setTotal(totalAmount)
 
-            const totalItems = cart.reduce((acc:any,item:number)=>{
+            const totalItems = cart.reduce((acc:any,item:any)=>{
                 return acc + item.quantity
             },0)
             setTotalItems(totalItems)
