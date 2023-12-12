@@ -7,6 +7,7 @@ export default function MainFooter(){
                 src='/images/music-store-1.jpg'
                 width={'150'}
                 height={'50'}
+                alt='Music store image'
             />
             <h3 className="text-[#161616] font-medium">MY ACCOUNT</h3>
             Sign in/Sign up

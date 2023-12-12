@@ -33,6 +33,7 @@ export default function Menu(){
                         src='/images/music-store.jpg'
                         width={'150'}
                         height={'50'}
+                        alt='Guitar image'
                     />
                 </Link>
                 <ul className="flex gap-7 items-center">

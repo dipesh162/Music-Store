@@ -34,6 +34,7 @@ export default function MenuMobile(){
                         src='/images/music-store.jpg'
                         width={'105'}
                         height={'35'}
+                        alt='Guitar image'
                     />
                 </Link>
                 <div className="flex items-center gap-2">
