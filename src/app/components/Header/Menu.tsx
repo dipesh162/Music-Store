@@ -42,7 +42,7 @@ export default function Menu(){
                         <div className="flex items-center gap-2 font-semibold">Musical Instruments <BsChevronDown size={14} color="black"/></div>
                         <CSSTransition
                             in={instrumentsMenu}
-                            // timeout={2000}
+                            timeout={10}
                             classNames="transitions"
                             unmountOnExit
                         >
