@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 
-function useOutsideAlerter(ref,cb) {
+function useOutsideAlerter(ref:any,cb) {
     useEffect(() => {
       /**
        * Alert if clicked on outside of element
        */
-      function handleClickOutside(event) {
+      function handleClickOutside(event:any) {
         if (ref.current && !ref.current.contains(event.target)) {
         //   alert("You clicked outside of me!");
           // handleDrawer()
