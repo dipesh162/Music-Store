@@ -5,7 +5,7 @@ import { BsChevronDown } from 'react-icons/bs';
 import UserMenu from './UserMenu';
 import useOutsideAlerter from '@/hooks/useOutsideDetect';
 
-export default function MenuMobileDrawer({handleDrawer}){
+export default function MenuMobileDrawer({handleDrawer}:{handleDrawer:any}){
 
     const [showInstruments, setShowInstruments] = useState(false)
     const drawerRef = useRef(null)
