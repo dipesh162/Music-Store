@@ -63,7 +63,7 @@ const addToCartThunk =
   (
     params: AddToCartParams
   ): ThunkAction<void, RootState, undefined, DataActionTypes> =>
-    async (dispatch, getState) => {
+    async (dispatch:any, getState) => {
       const saveCartItems = (product:any) =>{
         dispatch(
           addToCart({
@@ -114,11 +114,7 @@ const addToCartThunk =
       } else {
         const { productId, quantity } = params;
 
-        dispatch(
-          addToCart({
-            productId,
-            quantity,
-          })
+        dispatch(addToCart({productId,quantity})
         );
       }
     };
@@ -127,7 +123,7 @@ const removeFromCartThunk =
 (
   params: RemoveFromCartParams
 ): ThunkAction<void, RootState, undefined, DataActionTypes> =>
-    async (dispatch, getState) => {
+    async (dispatch:any, getState) => {
     const removeCartItems = (products: any) =>{
       dispatch(removeFromCart({
         ids: productIds
@@ -171,7 +167,7 @@ const removeFromCartThunk =
 const updateCartThunk = (
   params: UpdateCartParams
 ): ThunkAction<void, RootState, undefined, DataActionTypes> =>
-    async (dispatch, getState) => {
+    async (dispatch:any, getState) => {
     const updateCartItems = (productId: string,quantity: number) => {
       dispatch(updateCart({
         id: productId,
