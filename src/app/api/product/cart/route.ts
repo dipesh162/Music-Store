@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
             });
 
             // Wait for all of the above update operations to complete
-            const updatedResults:[] = await Promise.all(updateOperations)
+            const updatedResults: { cart?: any }[] = await Promise.all(updateOperations)
             updatedUsers = updatedResults[0].cart
         } else {
             const user = await User.findOne({ _id: userId });
