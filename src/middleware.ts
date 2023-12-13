@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
  
-const allowedOrigins = ['https://music-store-dipesh162.vercel.app', 'http://localhost:3000', 'https://www.google.com']
+const allowedOrigins = ['https://music-store-dipesh162.vercel.app', 'https://music-store-swart.vercel.app', 'http://localhost:3000', 'https://www.google.com']
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
