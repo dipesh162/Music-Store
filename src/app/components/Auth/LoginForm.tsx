@@ -41,7 +41,7 @@ export default function LoginForm(){
             }
         } catch (error: any) {
             console.log("login failed", error.message)
-            toast.error(err.response.data.message,{
+            toast.error(error.response.data.message,{
                 position: toast.POSITION.BOTTOM_RIGHT,
             })
         } finally {

@@ -28,7 +28,7 @@ export default function ProfilePage(){
             router.push('/login')
         } catch (error:any) {
             console.log(error.message)
-            toast.error(err.response.data.message,{
+            toast.error(error.response.data.message,{
                 position: toast.POSITION.BOTTOM_RIGHT,
             })
         }
