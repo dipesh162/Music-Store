@@ -1,8 +1,12 @@
 'use client'
+
+// React
 import React, { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LiaAngleLeftSolid } from "react-icons/lia";
+
+// Static data
 import TopCategories from '../../static/TopCategories'
 
 
@@ -43,7 +47,7 @@ export default function Categories() {
                       /> 
                     </div>
                   </div>
-                  <h3 className="text-[16px] md:text-[22px] text-center font-bold mt-1 md:mt-2">{category.name}</h3>
+                  <h3 className="text-[16px] md:text-[22px] text-center font-semibold mt-1 md:mt-2">{category.name}</h3>
                 </div>
               </Link>
             ))}

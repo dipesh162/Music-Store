@@ -58,33 +58,33 @@ export default function LoginForm(){
     
     return(
         <div className='flex flex-col items-center justify-center text-[#000000]'>
-            <h1 className='text-[#000000]'>Login</h1>
-            <label htmlFor="email" style={{color:'black'}}>email</label>
+            <h1 className='text-[#161616] text-[18px] font-semibold my-4'>Sign In</h1>
+            <label htmlFor="email" style={{color:'black'}}></label>
             <input 
-                className='p-2 border-[#000000] border-[1px]'
+                className='w-[75%] md:w-[30%] mb-[22px] p-2 border-[#000000] border-[1px]'
                 type="email" 
                 id="email"
                 value={user.email}
                 onChange={(e)=> setUser({...user, email: e.target.value})}
-                placeholder='email'
+                placeholder='Email'
             />
-            <br></br>
-            <label htmlFor="password" style={{color:'black'}}>password</label>
+            <label htmlFor="password" style={{color:'black'}}></label>
             <input 
-                className='p-2 border-[#000000] border-[1px]'
+                className='w-[75%] md:w-[30%] mb-[22px] p-2 border-[#000000] border-[1px]'
                 type="password" 
                 id="password"
                 value={user.password}
                 onChange={(e)=> setUser({...user, password: e.target.value})}
-                placeholder='password'
+                placeholder='Password'
             />
             <button
                 onClick={onLogin}
-                className='p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600'
+                disabled={buttonDisabled}
+                className='cursor-pointer border-[1px] border-[#616364] bg-[#616364] text-[#fff] px-5 py-2 block text-[16px] text-center font-semibold focus:outline-none'
             >
-                {buttonDisabled ? 'No Login' : 'Login'}
+                Login
             </button>
-            <Link href='/signup'>Signup here</Link>
+            <span className='mt-3'>Don’t have an account? <Link href='/signup'><span className='font-[500] text-[#616364]'>Get Started!</span></Link></span>
         </div>
     )
 }
