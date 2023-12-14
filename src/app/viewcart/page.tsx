@@ -1,8 +1,9 @@
 'use client'
 
 // React
-import { useEffect, useState } from "react"
 import axios from "axios"
+import { toast } from "react-toastify"
+import { useEffect, useState } from "react"
 
 // Components
 import CartCard from "../components/Product/CartCard"
@@ -55,11 +56,22 @@ export default function ViewCart(){
         if(!user.token){ // user is logged out
             dispatch(removeFromCartThunk({type: 'loggedOut', productIds: productIds}))
             handleUpdateCart(productIds)
+            toast.success("Item removed from cart", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         } else { // user is logged in
             const res:any = await dispatch(removeFromCartThunk({type: 'loggedIn', productIds: productIds}))
             if(res.data.success){
                 handleUpdateCart(productIds)
+                toast.success("Item removed from cart", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
+            } else {
+                toast.error("Error removing item from cart", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
             }
+            
         }
     }
 

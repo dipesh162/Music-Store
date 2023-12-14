@@ -57,6 +57,10 @@ const ProductInfo: FC<pageProps> = ({product}) =>{
     const handleCart = async () =>{
         if(!user.token){ // user is logged out
             dispatch(addToCartThunk({type: 'loggedOut', productId: product._id, quantity: 1}))
+            setAddedToCart(true)
+            toast.success("Item added to cart", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         } else { // user is logged in
             const res:any = await dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId: product._id, quantity: 1 }]}))
             if(res.status == 201){

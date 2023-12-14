@@ -1,7 +1,7 @@
 // React
-import { useRef, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link';
+import Image from 'next/image'
+import { useRef, useState } from 'react'
 
 // Hooks
 import useOutsideAlerter from '@/hooks/useOutsideDetect';
