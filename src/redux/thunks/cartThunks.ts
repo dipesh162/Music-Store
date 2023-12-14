@@ -106,10 +106,12 @@ const addToCartThunk =
                   saveCartItems(product)
             });
 
-            dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+            await dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+            return res
           }
         } catch (error) {
-          dispatch({ type: FETCH_DATA_FAILURE, error: "Failed to fetch data" });
+          await dispatch({ type: FETCH_DATA_FAILURE, error: "Failed to fetch data" });
+          return error
         }
       } else {
         const { productId, quantity } = params;

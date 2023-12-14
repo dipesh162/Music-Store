@@ -68,7 +68,7 @@ export default function ViewCart(){
             {!isLoading ?
                 <>
                     { cartProducts.length>0 ?
-                        <div className="flex flex-col md:flex-row md:justify-around mt-4">
+                        <div className="p-2 flex flex-col gap-2 md:flex-row md:justify-around mt-4">
                             <div>
                                 {cartProducts.map((cartProd:any,i:number)=>(
                                     <CartCard
@@ -80,9 +80,11 @@ export default function ViewCart(){
                                 ))}
                             </div>
                             
-                            <CartTotal 
-                                cartProducts={cartProducts}
-                            />
+                            <div className="">
+                                <CartTotal 
+                                    cartProducts={cartProducts}
+                                />
+                            </div>
                         </div> : <EmptyCart/>
                     }
                 </> : null

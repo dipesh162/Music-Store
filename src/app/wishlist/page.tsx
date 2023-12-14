@@ -53,7 +53,7 @@ export default function Wishlist(){
                 'token': user.token ? user.token : '',
             },
         })
-
+        console.log(res)
         if(res.data.success){
             let updatedWishlist = wishlist.filter((wishlist:any)=> wishlist.product._id != id)
             setWishlist(updatedWishlist)
@@ -63,13 +63,18 @@ export default function Wishlist(){
     }
 
     const handleCart = async (productId:string) =>{
-        dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId, quantity: 1 }]}))
-        let updatedWishlist = wishlist.filter((wishlist:any)=> wishlist.product._id != productId)
-        setWishlist(updatedWishlist)
+        const res:any = await dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId, quantity: 1 }]}))
+        if(res.response.status == 200){
+            let updatedWishlist = wishlist.filter((wishlist:any)=> wishlist.product._id != productId)
+            setWishlist(updatedWishlist)
+        } else {
+            alert('error adding product to cart')
+        }
+
     }
 
     return(
-        <>
+        <div className="px-2 md:px-4 py-5">
             {!user.token ?
                 <h3 className="text-center mt-4">Please <Link href='/login' className="font-semibold">login</Link> to add items in wishlist</h3> :
             
@@ -77,20 +82,22 @@ export default function Wishlist(){
                 <>
                     {wishlist?.length>0 ? 
                         <div>
-                            <p className="text-[18px]"><b>My Wishlist</b> {wishlist.length} {wishlist.length>1 ? 'items': 'item'} </p>
+                            <p className="text-[18px]  mb-4"><b>My Wishlist</b> {wishlist.length} {wishlist.length>1 ? 'items': 'item'} </p>
                         
-                            {wishlist?.map((wishlist:any, i:number)=>(
-                                <WishlistCard
-                                    key={i}
-                                    product={wishlist.product}
-                                    handleRemoveItem={handleRemoveItem}
-                                    handleCart={handleCart}
-                                />
-                            ))}
+                            <div className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-6">
+                                {wishlist?.map((wishlist:any, i:number)=>(
+                                    <WishlistCard
+                                        key={i}
+                                        product={wishlist.product}
+                                        handleRemoveItem={handleRemoveItem}
+                                        handleCart={handleCart}
+                                    />
+                                ))}
+                            </div>
                         </div> : <EmptyWishlist/>
                     }
                 </> : null
             }
-        </>
+        </div>
     )
 }

@@ -24,14 +24,14 @@ interface pageProps{
 const ProductsByCategory: FC<pageProps> = ({products}) =>{
 
     return(
-        <>
+        <div className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-6">
             {products.map((product:any,i:number)=>(
                 <ProductCard
                     key={i}
                     product={product}
                 />
             ))}
-        </>
+        </div>
     )
 }
 

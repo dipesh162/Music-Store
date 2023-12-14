@@ -1,5 +1,8 @@
-import ProductsByCategory from "@/app/components/Collections/ProductsByCategory";
+// React
 import axios from "axios";
+
+// Components
+import ProductsByCategory from "@/app/components/Collections/ProductsByCategory";
 
 const fetchData = async (categories:string) =>{
     try {
@@ -17,10 +20,10 @@ export default async function CategoryCollections({params}:any){
     const products = await fetchData(categories)
 
     return(
-        <>
+        <div className="px-2 md:px-4 py-5">
             <ProductsByCategory
                 products={products}
             />
-        </>
+        </div>
     )
 }

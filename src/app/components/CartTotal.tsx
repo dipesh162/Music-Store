@@ -35,7 +35,7 @@ export default function CartTotal({cartProducts}:any){
     return(
         <>
             {(totalItems && total) ?
-                <div>
+                <div className="mt-4">
                     Price Details {totalItems} items
                     <h1 className="text-[#000] text-[24px]">Total: {total.toLocaleString('')}</h1>
                 </div> : null
