@@ -53,14 +53,19 @@ const ProductInfo: FC<pageProps> = ({product}) =>{
 
     const props = {width: 400, height: 250, zoomWidth: 500, img: "1.jpg"};
 
-    const handleCart = () =>{
+    const handleCart = async () =>{
         if(!user.token){ // user is logged out
             dispatch(addToCartThunk({type: 'loggedOut', productId: product._id, quantity: 1}))
         } else { // user is logged in
-            dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId: product._id, quantity: 1 }]}))
+            const res:any = await dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId: product._id, quantity: 1 }]}))
+            if(res.status == 201){
+                setAddedToCart(true)
+                // handleRedirectToCart()
+            } else {
+                alert('error adding product to cart')
+            }
         }
-        setAddedToCart(true)
-        // handleRedirectToCart()
+
     }
 
     return(
@@ -79,7 +84,7 @@ const ProductInfo: FC<pageProps> = ({product}) =>{
                     <button onClick={handleCart} className='bg-[#616364] font-semibold border-[2px] border-[#616364]  text-white text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5'>
                         <BiShoppingBag size={20}/> <span className='text-[14px]'>ADD TO CART</span>
                     </button> :
-                    <Link href={`${process.env.NEXT_PUBLIC_DOMAIN}/viewcart`} className='bg-[#616364] font-semibold border-[2px] border-[#616364]  text-white text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5'>
+                    <Link prefetch={false} href={`${process.env.NEXT_PUBLIC_DOMAIN}/viewcart`} className='bg-[#616364] font-semibold border-[2px] border-[#616364]  text-white text-[14px] md:text-base px-3 py-2 rounded-md flex items-center gap-1.5'>
                         <BiShoppingBag size={20}/> <span className='text-[14px]'>GO TO CART</span>
                     </Link>
                 }

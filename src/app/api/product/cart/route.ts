@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
                             $push: {
                                 cart: {
                                     productId: prod.productId,
-                                    quantity: prod.productId,
+                                    quantity: prod.quantity,
                                 },
                             },
                         },
@@ -110,13 +110,10 @@ export async function POST(request: NextRequest) {
             success: true,
             message: 'Products added to cart',
             cart: updatedUsers
-        })
+        },{status:201})
 
     } catch (error) {
-        return NextResponse.json({
-            success: false,
-            message: "error saving user's cart from local cart"
-        })
+        return NextResponse.json({success:false,error: "error saving user's cart from local cart"}, {status: 500})
     }
 }
 
