@@ -1,7 +1,7 @@
 'use client'
 
 // React
-import {toast} from "react-hot-toast";
+import { toast } from "react-toastify";
 import Link from "next/link"
 import { useRouter } from "next/navigation";
 import axios from "axios"
@@ -35,11 +35,15 @@ const UserMenu: FC<pageProps> = ({handleMouseLeave}) =>{
             await axios.get('/api/users/logout')
             dispatch(reset())
             dispatch(emptyCart()) // empty cart on logout
-            toast.success('Logout successful')
+            toast.success("Logged out successfully !", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
             router.push('/')
         } catch (error:any) {
             console.log(error.message)
-            toast.error(error.message)
+            toast.error(err.response.data.message,{
+                position: toast.POSITION.BOTTOM_RIGHT
+            })
         }
     }
 

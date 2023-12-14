@@ -14,7 +14,9 @@ export async function DELETE(request: NextRequest,{params}: any) {
         const token = request.headers.get('token')
         const user = await User.findOne({token})
         if(!user){
-            return NextResponse.json({error: "User not found"}, {status: 404})
+            return NextResponse.json({
+                message: "User not found"
+            }, {status: 404})
         }
 
         const {id : productId} = params
@@ -33,6 +35,7 @@ export async function DELETE(request: NextRequest,{params}: any) {
     } catch (err: any){
         return NextResponse.json({
             success: false,
-            error: err.message}, {status: 500})
+            message: err.message
+        }, {status: 500})
     } 
 }

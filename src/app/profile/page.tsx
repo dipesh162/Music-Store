@@ -1,12 +1,16 @@
 "use client"
-import { useAppDispatch } from "@/redux/hooks";
-import { reset } from "@/redux/slices/authSlice";
 
+// React
 import axios from "axios"
 import Link from "next/link"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import {toast} from "react-hot-toast";
+import { toast } from "react-toastify";
+
+// Hooks
+import { useAppDispatch } from "@/redux/hooks";
+import { reset } from "@/redux/slices/authSlice";
+
 
 export default function ProfilePage(){
     const router = useRouter()
@@ -18,11 +22,15 @@ export default function ProfilePage(){
         try {
             await axios.get('/api/users/logout')
             dispatch(reset())
-            toast.success('Logout successful')
+            toast.success("Logged out successfully !", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
             router.push('/login')
         } catch (error:any) {
             console.log(error.message)
-            toast.error(error.message)
+            toast.error(err.response.data.message,{
+                position: toast.POSITION.BOTTOM_RIGHT,
+            })
         }
     }
 

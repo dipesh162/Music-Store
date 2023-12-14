@@ -1,8 +1,16 @@
+// React
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { ToastContainer } from 'react-toastify';
+
+// Components
 import Footer from './components/Footer'
 import Header from './components/Header'
+
+// Redux
 import { Providers } from "@/redux/provider";
+
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -21,6 +29,7 @@ export default function RootLayout({
         <Providers>
           <Header/>
             <div className='max-w-[1280px] mx-auto'>
+              <ToastContainer />
               {children}
             </div>
           {/* <Footer/> */}

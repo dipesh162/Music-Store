@@ -16,13 +16,17 @@ export async function POST(request: NextRequest){
         const user = await User.findOne({email})
 
         if(!user){
-            return NextResponse.json({error: "User does not exist"}, {status: 400})
+            return NextResponse.json({
+                message: "User does not exist"}, 
+                {status: 400})
         }
 
         // check if password is correct
         const validPassword = await bcryptjs.compare(password, user.password)
         if(!validPassword){
-            return NextResponse.json({error: "Invalid password"}, {status: 400})
+            return NextResponse.json({
+                message: "Invalid password"
+            }, {status: 400})
         } 
 
         // Create token data
@@ -54,6 +58,8 @@ export async function POST(request: NextRequest){
 
         return response
     } catch (err: any){
-        return NextResponse.json({error: err.message}, {status: 500})
+        return NextResponse.json({
+            message: err.message
+        }, {status: 500})
     }
 }

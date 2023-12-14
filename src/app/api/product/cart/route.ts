@@ -51,7 +51,9 @@ export async function GET(request: NextRequest) {
         })
 
     } catch (err: any){
-        return NextResponse.json({error: err.message}, {status: 500})
+        return NextResponse.json({
+            message: err.message
+        }, {status: 500})
     } 
 }
 
@@ -113,7 +115,10 @@ export async function POST(request: NextRequest) {
         },{status:201})
 
     } catch (error) {
-        return NextResponse.json({success:false,error: "error saving user's cart from local cart"}, {status: 500})
+        return NextResponse.json({
+            success:false,
+            message: "error saving user's cart from local cart"
+        }, {status: 500})
     }
 }
 

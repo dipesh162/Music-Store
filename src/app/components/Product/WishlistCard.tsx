@@ -47,11 +47,9 @@ export default function WishlistCard({product,handleRemoveItem,handleCart}: {pro
             <h4 className='font-bold'>{product.quantity}</h4>: null
           } */}
         </div>
-        <Link href={`/instruments/${product.slug}`} className='#212121 text-base text-center mb-3'>
-            <b>&#8377;{(product.price).toLocaleString()}</b>
-        </Link>
+        <b className='#212121 text-base text-center mb-3'>&#8377;{(product.price).toLocaleString()}</b>
 
-        <h3 className='text-[14px] cursor-pointer text-center border-t-[1px] py-2 border-[#eaeaec] text-[#616364] font-[600]' onClick={()=> handleCart && handleCart(product._id)}>MOVE TO CART</h3>
+        <h3 className='text-[14px] font-bold cursor-pointer text-center border-t-[1px] py-3 border-[#eaeaec] text-[#616364]' onClick={()=> handleCart && handleCart(product._id)}>MOVE TO CART</h3>
     </div>
   )
 }

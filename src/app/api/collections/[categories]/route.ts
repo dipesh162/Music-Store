@@ -12,7 +12,7 @@ export async function GET(request: NextRequest,{params}:any){
         const productsByCategories =  await Product.find({category:categories})
 
         if(!productsByCategories){
-            return NextResponse.json({error: "Product does not exist"}, {status: 400})
+            return NextResponse.json({message: "Product does not exist"}, {status: 400})
         }
 
         return NextResponse.json({
@@ -21,6 +21,6 @@ export async function GET(request: NextRequest,{params}:any){
         })
 
     } catch (err: any){
-        return NextResponse.json({error: err.message}, {status: 500})
+        return NextResponse.json({message: err.message}, {status: 500})
     }   
 }

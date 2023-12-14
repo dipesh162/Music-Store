@@ -42,7 +42,7 @@ export default function MenuMobile(){
                     <Link href='/wishlist'><FaRegHeart size={22} color="black"/></Link>
                     <Link href='/viewcart' className='relative'>
                         <BiShoppingBag size={24} color="black"/>
-                        {cartLength>0 && <div className='flex justify-center items-center absolute top-[-8px] left-3 rounded-[50%] font-bold text-white text-[8px] bg-[#616364] h-4 w-4'>{cartLength}</div>}
+                        {cartLength>0 && <div className='flex justify-center items-center absolute top-[-8px] left-3 rounded-[50%] font-bold text-white text-[8px] bg-[#616364] h-4 w-4 z-[-1]'>{cartLength}</div>}
                     </Link>
                 </div>
             </div>

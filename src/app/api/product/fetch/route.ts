@@ -13,7 +13,9 @@ export async function GET(request: NextRequest){
 
         const product =  await Product.findOne({slug:slug})
         if(!product){
-            return NextResponse.json({error: "Product does not exist"}, {status: 400})
+            return NextResponse.json({
+                message: "Product does not exist"
+            }, {status: 400})
         }
 
         return NextResponse.json({
@@ -22,6 +24,8 @@ export async function GET(request: NextRequest){
         })
 
     } catch (err: any){
-        return NextResponse.json({error: err.message}, {status: 500})
+        return NextResponse.json({
+            message: err.message
+        }, {status: 500})
     }   
 }

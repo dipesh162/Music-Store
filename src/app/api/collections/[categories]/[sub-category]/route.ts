@@ -12,12 +12,12 @@ export async function GET(request: NextRequest,params:any){
 
         const productsByCategories =  await Product.find({subCategory: subCategory})
         if(!productsByCategories){
-            return NextResponse.json({error: "Product does not exist"}, {status: 400})
+            return NextResponse.json({message: "Product does not exist"}, {status: 400})
         }
 
         const productsBySubCategories = productsByCategories
         if(!productsBySubCategories){
-            return NextResponse.json({error: "Product does not exist"}, {status: 400})
+            return NextResponse.json({message: "Product does not exist"}, {status: 400})
         }
 
         return NextResponse.json({
@@ -26,6 +26,9 @@ export async function GET(request: NextRequest,params:any){
         })
 
     } catch (err: any){
-        return NextResponse.json({error: err.message}, {status: 500})
+        return NextResponse.json({
+            success:false,
+            message: err.message
+        }, {status: 500})
     }   
 }
