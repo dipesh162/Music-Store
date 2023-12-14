@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 // Hooks
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -57,6 +58,9 @@ export default function Wishlist(){
         if(res.data.success){
             let updatedWishlist = wishlist.filter((wishlist:any)=> wishlist.product._id != id)
             setWishlist(updatedWishlist)
+            toast.success("Item is removed from wishlist", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         } else {
             console.log('error')
         }
@@ -64,13 +68,18 @@ export default function Wishlist(){
 
     const handleCart = async (productId:string) =>{
         const res:any = await dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId, quantity: 1 }]}))
-        if(res.response.status == 200){
+
+        if(res.data.success){
             let updatedWishlist = wishlist.filter((wishlist:any)=> wishlist.product._id != productId)
             setWishlist(updatedWishlist)
+            toast.success("Item is moved to cart", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         } else {
-            alert('error adding product to cart')
+            toast.error("error adding product to cart", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         }
-
     }
 
     return(

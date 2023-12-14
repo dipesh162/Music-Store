@@ -2,6 +2,7 @@
 
 // React
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { FC, useEffect, useState } from "react";
 
 // Icons
@@ -58,6 +59,13 @@ const WishlistBtn: FC<pageProps> = ({productId,btnType}) =>{
         })
         if(res.data.success) {
             setWishlisted(!wishListed)
+            toast.success("Item is added to wishlist", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
+        } else {
+            toast.error("Item is removed from wishlist", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+            });
         }
     }
 

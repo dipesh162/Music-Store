@@ -6,7 +6,6 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import {useRouter} from 'next/navigation';
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 // Redux
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';

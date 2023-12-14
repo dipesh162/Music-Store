@@ -2,6 +2,7 @@
 
 // React
 import { FC, useState } from 'react';
+import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -60,9 +61,15 @@ const ProductInfo: FC<pageProps> = ({product}) =>{
             const res:any = await dispatch(addToCartThunk({type: 'loggedIn', products: [{ productId: product._id, quantity: 1 }]}))
             if(res.status == 201){
                 setAddedToCart(true)
+                toast.success("Item added to cart", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
                 // handleRedirectToCart()
             } else {
-                alert('error adding product to cart')
+                toast.error("Error adding product to cart", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                });
+                // alert('error adding product to cart')
             }
         }
 
