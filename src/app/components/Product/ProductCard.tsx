@@ -31,7 +31,7 @@ export default function ProductCard({product}: {product:Product}) {
           productId={product._id}
           btnType='icon'
         /> 
-        <Link href={`/instruments/${product.slug}`} className='relative h-[120px] md:h-[200px] w-[120px] md:w-[200px] block m-auto'>
+        <Link href={`/instruments/${product.slug}`} className='relative h-[120px] md:h-[200px] w-[120px] md:w-[200px] block m-auto mt-4'>
           <Image
               src={product.images[0]}
               fill={true}
@@ -41,7 +41,7 @@ export default function ProductCard({product}: {product:Product}) {
         </Link>
 
         <div className='flex flex-col items-center md:items-start'>
-          <Link href={`/instruments/${product.slug}`} className='text-[#212121] text-[14px] pb-1 hover:text-[#2874f0]'>
+          <Link href={`/instruments/${product.slug}`} className='text-[#212121] text-[14px] pb-1 hover:text-[#2874f0] max-w-[200px] overflow-ellipsis line-clamp-2'>
             {product.name}
           </Link> 
           <div className='rounded-[3px] text-white py-0.5 pr-1 pl-1.5 bg-[#388E3C] flex items-center gap-1 w-fit'>

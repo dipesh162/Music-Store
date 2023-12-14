@@ -32,7 +32,7 @@ export default function WishlistCard({product,handleRemoveItem,handleCart}: {pro
           <RxCross2 color='white' size={12} /> 
         </div>
         <div className='p-2 text-center'>
-          <Link className='h-[120px] md:h-[200px] w-[120px] md:w-[200px] relative block m-auto' href={`/instruments/${product.slug}`}>
+          <Link className='h-[120px] md:h-[200px] w-[120px] md:w-[200px] relative block m-auto mt-5' href={`/instruments/${product.slug}`}>
             <Image
                 src={product.images[0]}
                 fill={true}
@@ -40,7 +40,7 @@ export default function WishlistCard({product,handleRemoveItem,handleCart}: {pro
                 className='pb-1'
             />
           </Link>
-          <Link href={`/instruments/${product.slug}`} className='text-[#212121] text-[14px] pb-1'>
+          <Link href={`/instruments/${product.slug}`} className='text-[#212121] text-[14px] pb-1 max-w-[200px] overflow-ellipsis line-clamp-2'>
             {product.name}
           </Link> 
           {/* {product.cta == 'cart' ?

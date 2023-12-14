@@ -82,9 +82,9 @@ export default function Wishlist(){
                 <>
                     {wishlist?.length>0 ? 
                         <div>
-                            <p className="text-[18px]  mb-4"><b>My Wishlist</b> {wishlist.length} {wishlist.length>1 ? 'items': 'item'} </p>
+                            <p className="text-[18px] text-center md:text-left mb-4"><b>My Wishlist</b> {wishlist.length} {wishlist.length>1 ? 'items': 'item'} </p>
                         
-                            <div className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-6">
+                            <div className="flex flex-col md:flex-row flex-wrap gap-3 md:gap-6 items-center">
                                 {wishlist?.map((wishlist:any, i:number)=>(
                                     <WishlistCard
                                         key={i}
