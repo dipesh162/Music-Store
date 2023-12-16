@@ -4,6 +4,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FC, useEffect, useState } from "react";
+import { useRouter } from 'next/navigation';
 
 // Icons
 import { FaHeart } from "react-icons/fa";
@@ -26,6 +27,7 @@ const WishlistBtn: FC<pageProps> = ({productId,btnType}) =>{
     const [showWishlistBtn, setShowWishlistBtn] = useState(false)
     const [wishListed, setWishlisted] = useState(false)
     const user:any = useAppSelector((state)=> state.auth.user)
+    const router = useRouter()
 
     const checkWishlistStatus = async () =>{
         const res = await axios.get(`/api/product/wishlist/status`,{
@@ -48,6 +50,8 @@ const WishlistBtn: FC<pageProps> = ({productId,btnType}) =>{
 
 
     const handleWishlisting = async ()=>{
+        if(!user.token) return router.push('/login')
+
         const res = await axios.post(`/api/product/wishlist`,{
             productId:productId
         },{
