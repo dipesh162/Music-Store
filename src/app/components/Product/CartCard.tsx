@@ -62,7 +62,7 @@ export default function CartCard({product, handleDelete, userAuthState}:{product
                     { quantityDropdown && 
                         <div ref={dropDownRef} className="w-full absolute py-1.5 left-[0.5px] top-0 z-[10px] bg-[#fff] border-[#BBBFBF] border-[1px] rounded-[8px] shadow-[0_2px_5px_rgba(15,17,17,.15)]">
                             {[ ... Array(10)].map((item,i)=>(
-                                <div key={i} className='' onClick={()=>updateQuantity(i)}>
+                                <div key={i} className='text-[14px]' onClick={()=>updateQuantity(i)}>
                                     {i ===0 ? <span className='pl-1'>0 (Delete)</span>: <div className={quantity == i ? 'bg-[#EDFDFF] border-[#D5D9D9] border-[1px]  pl-1 py-0.5' : 'pl-1 py-0.5'}>{i}</div>}
                                 </div>
                             ))}
