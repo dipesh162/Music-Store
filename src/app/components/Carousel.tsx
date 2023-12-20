@@ -26,7 +26,7 @@ export default function Carousel({children: slides}:{children:any}){
             <div className="absolute bottom-3 right-0 left-0">
                 <div className="flex items-center justify-center gap-2">
                     {slides.map((_:any, i:number)=>(
-                        <div onClick={()=> setCurr(curr=> i)} className={`hover:cursor-pointer transition-all w-1.5 md:w-3 h-1.5 md:h-3 bg-white rounded-full ${curr ===i ? 'p-1 md:p-2': 'bg-opacity-50'}`}/>
+                        <div key={i} onClick={()=> setCurr(curr=> i)} className={`hover:cursor-pointer transition-all w-1.5 md:w-3 h-1.5 md:h-3 bg-white rounded-full ${curr ===i ? 'p-1 md:p-2': 'bg-opacity-50'}`}/>
                     ))}
                 </div>
             </div>
