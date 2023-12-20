@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Header/>
-            <div className='max-w-[1280px] mx-auto'>
+            <div className='max-w-[1280px] mx-auto pb-6'>
               <ToastContainer />
               {children}
             </div>

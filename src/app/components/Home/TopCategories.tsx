@@ -29,7 +29,7 @@ export default function Categories() {
   
   return (
     <>
-      <h3 className='text-[22px] md:text-[28px] text-center font-semibold my-3'>Top Categories</h3>
+      <h3 className='text-[22px] md:text-[28px] text-center font-semibold mt-8 mb-4'>Top Categories</h3>
 
       <div className='relative px-3 lg:px-1'>
         <div ref={carouselRef} className='no-scrollbar overflow-hidden scroll-smooth'>
