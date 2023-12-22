@@ -11,7 +11,7 @@ const TopCategories = [
     },
     {
         name: 'Acoustic Drum Kits',
-        link: '/collections/drums-and-percussion/acoustic-drum-kits',
+        link: '/collections/drums-and-percussion/acoustic-drumkits',
         img: '/images/Top Categories/acoustic-drum-kits.avif'
     },
     {
