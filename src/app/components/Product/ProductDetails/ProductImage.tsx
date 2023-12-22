@@ -25,7 +25,7 @@ const ProductImage: FC<pageProps> = ({width, height,src,index, wishListIcon, cur
             <Image
                 src={src}
                 width={width ?? 100 }
-                height={height ?? 100}
+                height={height ?? 101}
                 alt='product image'
             />
             { wishListIcon && 
