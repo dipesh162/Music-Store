@@ -7,7 +7,7 @@ import Banners from './components/Home/Banners'
 export default function Home() {
   return (
     <main className="">
-      <Banners/>
+      <Banners />
       <TopCategories/>
     </main>
   )
