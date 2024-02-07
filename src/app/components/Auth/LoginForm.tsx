@@ -59,7 +59,7 @@ export default function LoginForm(){
     return(
         <div className='flex flex-col items-center justify-center text-[#000000]'>
             <h1 className='text-[#161616] text-[18px] font-semibold my-4'>Sign In</h1>
-            <label htmlFor="email" style={{color:'black'}}></label>
+            <label data-testid="email-label" htmlFor="email" style={{color:'black'}}></label>
             <input 
                 className='w-[75%] md:w-[30%] mb-[22px] p-2 border-[#000000] border-[1px]'
                 type="email" 

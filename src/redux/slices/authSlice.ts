@@ -46,7 +46,16 @@ export const auth = createSlice({
       state.user = initialState.user
     }
   },
-  extraReducers: {},
+  extraReducers: (builder) => {
+    builder
+      // extra reducers here using builder callback notation
+      // .addCase(someAction.type, (state, action) => {
+      //   // reducer logic
+      // })
+      // .addCase(anotherAction.type, (state, action) => {
+      //   // reducer logic
+      // });
+  }
 })
 
 

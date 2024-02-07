@@ -1,5 +1,5 @@
 import { Action, configureStore } from '@reduxjs/toolkit'
-import { persistReducer, persistStore } from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist';
 import authReducer from './slices/authSlice'
 import cartReducer from './slices/cartSlice'
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
@@ -23,6 +23,12 @@ const store = configureStore({
     auth: persistedAuthReducer,
     cart: persistedCartReducer
   },
+  middleware: (getDefaultMiddleware) =>
+  getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
   devTools: process.env.NODE_ENV !== "production",
 });
 

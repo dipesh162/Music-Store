@@ -46,6 +46,16 @@ export const cart = createSlice({
         state.cart = initialState.cart
       }
     },
+    extraReducers: (builder) => {
+      builder
+        // extra reducers here using builder callback notation
+        // .addCase(someAction.type, (state, action) => {
+        //   // reducer logic
+        // })
+        // .addCase(anotherAction.type, (state, action) => {
+        //   // reducer logic
+        // });
+    }
 })
 
 export const {
