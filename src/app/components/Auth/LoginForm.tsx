@@ -68,7 +68,7 @@ export default function LoginForm(){
                 onChange={(e)=> setUser({...user, email: e.target.value})}
                 placeholder='Email'
             />
-            <label htmlFor="password" style={{color:'black'}}></label>
+            <label data-testid="password-label" htmlFor="password" style={{color:'black'}}></label>
             <input 
                 className='w-[75%] md:w-[30%] mb-[22px] p-2 border-[#000000] border-[1px]'
                 type="password" 
