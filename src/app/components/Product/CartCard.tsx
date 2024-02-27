@@ -60,7 +60,7 @@ export default function CartCard({product, handleDelete, userAuthState}:{product
                 <div className='w-fit cursor-pointer relative py-1 pl-[10px] pr-[6px] bg-[#F0F2F2] border-[#BBBFBF] border-[1px] rounded-[8px] shadow-[0_2px_5px_0px_rgba(213,217,217,.5)]' onClick={()=> setQuantityDropdown((prevState)=> !prevState)}>
                     <div className='flex items-center gap-1 text-[14px]'>Qty: {quantity} <span className='rotate-[90]'><MdOutlineKeyboardArrowDown className='font-bold' size={20} color='#616364'/></span></div>
                     { quantityDropdown && 
-                        <div ref={dropDownRef} className="w-full absolute py-1.5 left-[0.5px] top-0 z-[10px] bg-[#fff] border-[#BBBFBF] border-[1px] rounded-[8px] shadow-[0_2px_5px_rgba(15,17,17,.15)]">
+                        <div ref={dropDownRef} className="w-full absolute py-1.5 left-[0.5px] top-0 z-[10] bg-[#fff] border-[#BBBFBF] border-[1px] rounded-[8px] shadow-[0_2px_5px_rgba(15,17,17,.15)]">
                             {[ ... Array(10)].map((item,i)=>(
                                 <div key={i} className='text-[14px]' onClick={()=>updateQuantity(i)}>
                                     {i ===0 ? <span className='pl-1'>0 (Delete)</span>: <div className={quantity == i ? 'bg-[#EDFDFF] border-[#D5D9D9] border-[1px]  pl-1 py-0.5' : 'pl-1 py-0.5'}>{i}</div>}
